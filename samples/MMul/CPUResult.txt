@@ -1,0 +1,2 @@
+Execution mode=CPU
+Time = 349431538502

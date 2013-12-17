@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/1324/trunk/examples/javaonedemo
+END
+mandel.bat
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/675/trunk/examples/javaonedemo/mandel.bat
+END
+get-jogamp-build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/1076/trunk/examples/javaonedemo/get-jogamp-build.xml
+END
+life.sh
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/1076/trunk/examples/javaonedemo/life.sh
+END
+mandel.sh
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/1076/trunk/examples/javaonedemo/mandel.sh
+END
+build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/950/trunk/examples/javaonedemo/build.xml
+END
+nbody.bat
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/950/trunk/examples/javaonedemo/nbody.bat
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/1076/trunk/examples/javaonedemo/.classpath
+END
+life.bat
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/675/trunk/examples/javaonedemo/life.bat
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/667/trunk/examples/javaonedemo/.project
+END
+nbody.sh
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/1324/trunk/examples/javaonedemo/nbody.sh
+END

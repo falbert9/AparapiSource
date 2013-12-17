@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/1076/trunk/examples/javaonedemo/jogamp
+END
+nativewindow_win32.dll
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/1076/trunk/examples/javaonedemo/jogamp/nativewindow_win32.dll
+END
+JOGL_LICENSE.txt
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/1076/trunk/examples/javaonedemo/jogamp/JOGL_LICENSE.txt
+END
+gluegen-rt-natives-windows-amd64.jar
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/1076/trunk/examples/javaonedemo/jogamp/gluegen-rt-natives-windows-amd64.jar
+END
+jogl_mobile.dll
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/1076/trunk/examples/javaonedemo/jogamp/jogl_mobile.dll
+END
+jogl.all.jar
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/1076/trunk/examples/javaonedemo/jogamp/jogl.all.jar
+END
+jogl_desktop.dll
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/1076/trunk/examples/javaonedemo/jogamp/jogl_desktop.dll
+END
+gluegen-rt.dll
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/1076/trunk/examples/javaonedemo/jogamp/gluegen-rt.dll
+END
+nativewindow_awt.dll
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/1076/trunk/examples/javaonedemo/jogamp/nativewindow_awt.dll
+END
+gluegen-rt.jar
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/1076/trunk/examples/javaonedemo/jogamp/gluegen-rt.jar
+END
+jogl-all-natives-windows-amd64.jar
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/1076/trunk/examples/javaonedemo/jogamp/jogl-all-natives-windows-amd64.jar
+END
+GLUEGEN_LICENSE.txt
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/1076/trunk/examples/javaonedemo/jogamp/GLUEGEN_LICENSE.txt
+END
+newt.dll
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/1076/trunk/examples/javaonedemo/jogamp/newt.dll
+END

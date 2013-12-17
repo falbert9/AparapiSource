@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/src/java/com/amd/aparapi/internal/exception
+END
+CodeGenException.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/src/java/com/amd/aparapi/internal/exception/CodeGenException.java
+END
+RangeException.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/src/java/com/amd/aparapi/internal/exception/RangeException.java
+END
+AparapiException.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/src/java/com/amd/aparapi/internal/exception/AparapiException.java
+END
+ClassParseException.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/src/java/com/amd/aparapi/internal/exception/ClassParseException.java
+END

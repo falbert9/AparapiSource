@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/1327/trunk/com.amd.aparapi/src/java/com/amd/aparapi/device
+END
+package-info.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/src/java/com/amd/aparapi/device/package-info.java
+END
+Device.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/src/java/com/amd/aparapi/device/Device.java
+END
+OpenCLDevice.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/1327/trunk/com.amd.aparapi/src/java/com/amd/aparapi/device/OpenCLDevice.java
+END
+JavaDevice.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/src/java/com/amd/aparapi/device/JavaDevice.java
+END

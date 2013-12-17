@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/1189/trunk/samples/mdarray
+END
+mdarray.sh
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/1172/trunk/samples/mdarray/mdarray.sh
+END
+build.xml
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/1157/trunk/samples/mdarray/build.xml
+END
+.classpath
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/1157/trunk/samples/mdarray/.classpath
+END
+mdarray.bat
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/1189/trunk/samples/mdarray/mdarray.bat
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/1157/trunk/samples/mdarray/.project
+END

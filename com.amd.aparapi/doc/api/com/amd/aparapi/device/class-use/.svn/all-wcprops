@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/device/class-use
+END
+OpenCLDevice.html
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/device/class-use/OpenCLDevice.html
+END
+JavaDevice.html
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/device/class-use/JavaDevice.html
+END
+OpenCLDevice.OpenCLInvocationHandler.html
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/device/class-use/OpenCLDevice.OpenCLInvocationHandler.html
+END
+OpenCLDevice.DeviceComparitor.html
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/device/class-use/OpenCLDevice.DeviceComparitor.html
+END
+OpenCLDevice.DeviceSelector.html
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/device/class-use/OpenCLDevice.DeviceSelector.html
+END
+Device.html
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/device/class-use/Device.html
+END
+Device.TYPE.html
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/device/class-use/Device.TYPE.html
+END

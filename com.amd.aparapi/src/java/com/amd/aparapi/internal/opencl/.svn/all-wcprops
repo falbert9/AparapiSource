@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/1327/trunk/com.amd.aparapi/src/java/com/amd/aparapi/internal/opencl
+END
+OpenCLPlatform.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/src/java/com/amd/aparapi/internal/opencl/OpenCLPlatform.java
+END
+OpenCLLoader.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/src/java/com/amd/aparapi/internal/opencl/OpenCLLoader.java
+END
+OpenCLProgram.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/!svn/ver/1327/trunk/com.amd.aparapi/src/java/com/amd/aparapi/internal/opencl/OpenCLProgram.java
+END
+OpenCLArgDescriptor.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/src/java/com/amd/aparapi/internal/opencl/OpenCLArgDescriptor.java
+END
+OpenCLMem.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/src/java/com/amd/aparapi/internal/opencl/OpenCLMem.java
+END
+OpenCLKernel.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/1324/trunk/com.amd.aparapi/src/java/com/amd/aparapi/internal/opencl/OpenCLKernel.java
+END

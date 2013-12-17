@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/jni
+END
+package-frame.html
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/jni/package-frame.html
+END
+package-use.html
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/jni/package-use.html
+END
+ConfigJNI.html
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/jni/ConfigJNI.html
+END
+package-summary.html
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/jni/package-summary.html
+END
+package-tree.html
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/jni/package-tree.html
+END
+KernelRunnerJNI.html
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/jni/KernelRunnerJNI.html
+END
+KernelArgJNI.html
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/jni/KernelArgJNI.html
+END
+RangeJNI.html
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/jni/RangeJNI.html
+END
+OpenCLJNI.html
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/jni/OpenCLJNI.html
+END

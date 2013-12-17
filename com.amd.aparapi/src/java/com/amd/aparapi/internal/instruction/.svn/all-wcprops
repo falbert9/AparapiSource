@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/src/java/com/amd/aparapi/internal/instruction
+END
+BranchSet.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/src/java/com/amd/aparapi/internal/instruction/BranchSet.java
+END
+ExpressionList.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/src/java/com/amd/aparapi/internal/instruction/ExpressionList.java
+END
+InstructionSet.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/src/java/com/amd/aparapi/internal/instruction/InstructionSet.java
+END
+InstructionPattern.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/src/java/com/amd/aparapi/internal/instruction/InstructionPattern.java
+END
+Instruction.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/src/java/com/amd/aparapi/internal/instruction/Instruction.java
+END
+InstructionTransformer.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/src/java/com/amd/aparapi/internal/instruction/InstructionTransformer.java
+END

@@ -1,0 +1,35 @@
+K 10
+svn:ignore
+V 380
+clt
+include
+cltest_x86_64.dSYM
+clt.dSYM
+dist
+cltest_x86_64
+Debug
+aparapi.exp
+aparapi.lib
+Aparapi.sdf
+cltest_x86_64.exe
+.cproject
+Aparapi.exp
+Aparapi.lib
+Config.obj
+ArrayBuffer.obj
+OpenCLArgDescriptor.obj
+KernelArg.obj
+OpenCLMem.obj
+JNIHelper.obj
+Range.obj
+agent.obj
+CLHelper.obj
+CLTest.obj
+AparapiBuffer.obj
+ProfileInfo.obj
+Aparapi.obj
+OpenCLJNI.obj
+JNIContext.obj
+classtools.obj
+
+END

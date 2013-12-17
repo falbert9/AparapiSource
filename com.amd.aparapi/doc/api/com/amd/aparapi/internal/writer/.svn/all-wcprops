@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/writer
+END
+package-frame.html
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/writer/package-frame.html
+END
+package-use.html
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/writer/package-use.html
+END
+package-summary.html
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/writer/package-summary.html
+END
+BlockWriter.html
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/writer/BlockWriter.html
+END
+package-tree.html
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/writer/package-tree.html
+END
+KernelWriter.html
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/writer/KernelWriter.html
+END

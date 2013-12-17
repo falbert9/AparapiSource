@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi
+END
+package-use.html
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/package-use.html
+END
+Config.html
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/Config.html
+END
+package-summary.html
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/package-summary.html
+END
+Kernel.EXECUTION_MODE.html
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/Kernel.EXECUTION_MODE.html
+END
+package-tree.html
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/package-tree.html
+END
+Kernel.Constant.html
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/Kernel.Constant.html
+END
+Kernel.Local.html
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/Kernel.Local.html
+END
+Config.InstructionListener.html
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/Config.InstructionListener.html
+END
+ProfileInfo.html
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/ProfileInfo.html
+END
+Range.html
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/Range.html
+END
+Kernel.Entry.html
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/Kernel.Entry.html
+END
+Kernel.html
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/Kernel.html
+END
+Kernel.KernelState.html
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/Kernel.KernelState.html
+END
+package-frame.html
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/package-frame.html
+END

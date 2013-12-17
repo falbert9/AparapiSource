@@ -1,0 +1,22 @@
+Execution mode=JTP origional
+Time = 318031260929
+
+Execution mode=JTP origional
+Time = 309173132990
+
+Execution mode=JTP with /16 threads
+Time = 301372644928
+
+Execution mode=JTP with /16 threads
+Time = 301759090938
+
+Execution mode=JTP with /4096 threads
+Time = 296374100760
+
+Execution mode=JTP with /4096 threads
+Time = 297714550031
+
+
+Execution mode=JTP with /1048576 threads
+Time = 298953571584
+

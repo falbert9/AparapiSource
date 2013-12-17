@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/1118/trunk/test/runtime/src/java/com/amd/aparapi/test/runtime
+END
+CallStaticFromAnonymousKernel.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/!svn/ver/1076/trunk/test/runtime/src/java/com/amd/aparapi/test/runtime/CallStaticFromAnonymousKernel.java
+END
+ExplicitBoolean.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/647/trunk/test/runtime/src/java/com/amd/aparapi/test/runtime/ExplicitBoolean.java
+END
+UseStaticArray.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/1076/trunk/test/runtime/src/java/com/amd/aparapi/test/runtime/UseStaticArray.java
+END
+Issue68.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/1076/trunk/test/runtime/src/java/com/amd/aparapi/test/runtime/Issue68.java
+END
+RangeSize.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/1076/trunk/test/runtime/src/java/com/amd/aparapi/test/runtime/RangeSize.java
+END
+Issue69.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/658/trunk/test/runtime/src/java/com/amd/aparapi/test/runtime/Issue69.java
+END
+Test12x4_4x2.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/624/trunk/test/runtime/src/java/com/amd/aparapi/test/runtime/Test12x4_4x2.java
+END
+Issue102.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/1117/trunk/test/runtime/src/java/com/amd/aparapi/test/runtime/Issue102.java
+END
+Issue103.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/1118/trunk/test/runtime/src/java/com/amd/aparapi/test/runtime/Issue103.java
+END
+Util.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/618/trunk/test/runtime/src/java/com/amd/aparapi/test/runtime/Util.java
+END
+BufferTransfer.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/1076/trunk/test/runtime/src/java/com/amd/aparapi/test/runtime/BufferTransfer.java
+END
+LoadCL.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/1076/trunk/test/runtime/src/java/com/amd/aparapi/test/runtime/LoadCL.java
+END
+squarer.cl
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/1076/trunk/test/runtime/src/java/com/amd/aparapi/test/runtime/squarer.cl
+END

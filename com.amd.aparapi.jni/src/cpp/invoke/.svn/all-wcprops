@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/1327/trunk/com.amd.aparapi.jni/src/cpp/invoke
+END
+OpenCLJNI.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/1327/trunk/com.amd.aparapi.jni/src/cpp/invoke/OpenCLJNI.cpp
+END
+JavaArgs.h
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/1076/trunk/com.amd.aparapi.jni/src/cpp/invoke/JavaArgs.h
+END
+OpenCLMem.h
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/1076/trunk/com.amd.aparapi.jni/src/cpp/invoke/OpenCLMem.h
+END
+OpenCLKernel.h
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/1076/trunk/com.amd.aparapi.jni/src/cpp/invoke/OpenCLKernel.h
+END
+OpenCLJNI.h
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/1076/trunk/com.amd.aparapi.jni/src/cpp/invoke/OpenCLJNI.h
+END
+OpenCLArgDescriptor.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/!svn/ver/1076/trunk/com.amd.aparapi.jni/src/cpp/invoke/OpenCLArgDescriptor.cpp
+END
+OpenCLProgram.h
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/1327/trunk/com.amd.aparapi.jni/src/cpp/invoke/OpenCLProgram.h
+END
+OpenCLArgDescriptor.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/!svn/ver/1076/trunk/com.amd.aparapi.jni/src/cpp/invoke/OpenCLArgDescriptor.h
+END
+OpenCLMem.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/1076/trunk/com.amd.aparapi.jni/src/cpp/invoke/OpenCLMem.cpp
+END

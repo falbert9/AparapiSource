@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/annotation
+END
+package-tree.html
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/annotation/package-tree.html
+END
+RemoveMe.html
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/annotation/RemoveMe.html
+END
+Unused.html
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/annotation/Unused.html
+END
+package-frame.html
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/annotation/package-frame.html
+END
+package-use.html
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/annotation/package-use.html
+END
+package-summary.html
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/annotation/package-summary.html
+END
+DocMe.html
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/annotation/DocMe.html
+END
+UsedByJNICode.html
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/!svn/ver/1076/trunk/com.amd.aparapi/doc/api/com/amd/aparapi/internal/annotation/UsedByJNICode.html
+END

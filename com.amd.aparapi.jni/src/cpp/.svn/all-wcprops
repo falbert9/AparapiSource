@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/1327/trunk/com.amd.aparapi.jni/src/cpp
+END
+CLHelper.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/1079/trunk/com.amd.aparapi.jni/src/cpp/CLHelper.h
+END
+JNIHelper.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/1082/trunk/com.amd.aparapi.jni/src/cpp/JNIHelper.h
+END
+classtoolstest.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/965/trunk/com.amd.aparapi.jni/src/cpp/classtoolstest.cpp
+END
+classtools.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/967/trunk/com.amd.aparapi.jni/src/cpp/classtools.cpp
+END
+classtools.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/967/trunk/com.amd.aparapi.jni/src/cpp/classtools.h
+END
+Common.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/1081/trunk/com.amd.aparapi.jni/src/cpp/Common.h
+END
+cltest.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/646/trunk/com.amd.aparapi.jni/src/cpp/cltest.cpp
+END
+CLHelper.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/1079/trunk/com.amd.aparapi.jni/src/cpp/CLHelper.cpp
+END
+agent.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/965/trunk/com.amd.aparapi.jni/src/cpp/agent.cpp
+END
+JNIHelper.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/1079/trunk/com.amd.aparapi.jni/src/cpp/JNIHelper.cpp
+END
+CLException.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/1076/trunk/com.amd.aparapi.jni/src/cpp/CLException.h
+END

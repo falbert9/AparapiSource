@@ -1,0 +1,646 @@
+     56    1     n       java.lang.invoke.MethodHandle::linkToStatic(LL)L (native)   (static)
+     60    2     n       java.lang.invoke.MethodHandle::linkToStatic(LLL)L (native)   (static)
+     66    3             java.lang.String::indexOf (70 bytes)
+     68    4     n       java.lang.invoke.MethodHandle::linkToStatic(LL)V (native)   (static)
+     69    5     n       java.lang.invoke.MethodHandle::linkToStatic(LL)J (native)   (static)
+     70    6     n       java.lang.invoke.MethodHandle::linkToStatic(LIL)V (native)   (static)
+     72    7     n       com.oracle.graal.hotspot.bridge.CompilerToVMImpl::executeCompiledMethodIntrinsic (native)   (static)
+     74    8             java.lang.String::hashCode (55 bytes)
+     90    9             java.lang.String::charAt (29 bytes)
+    109   10             java.lang.AbstractStringBuilder::ensureCapacityInternal (16 bytes)
+    111   11     n       sun.misc.Unsafe::getByte (native)   
+    111   12             com.oracle.graal.hotspot.HotSpotVMConfig::readCStringAsString (57 bytes)
+    116   13             java.lang.AbstractStringBuilder::append (29 bytes)
+    120   14  s          java.lang.StringBuffer::append (8 bytes)
+    124   15             java.lang.Object::<init> (1 bytes)
+    140   16     n       java.lang.System::arraycopy (native)   (static)
+    157   17             java.lang.Math::min (11 bytes)
+    174   18             java.util.HashMap::indexFor (6 bytes)
+    178   19             java.util.HashMap::transfer (115 bytes)
+    179   20             java.lang.String::equals (81 bytes)
+    184   21             java.io.DataOutputStream::writeUTF (435 bytes)
+    217   22   !         sun.reflect.generics.parser.SignatureParser::current (40 bytes)
+    220   23             java.lang.String::replace (127 bytes)
+    236   24             java.util.Arrays::copyOfRange (63 bytes)
+    246   25             java.lang.CharacterData::of (120 bytes)
+    246   26             java.lang.CharacterDataLatin1::getProperties (11 bytes)
+    253   27             sun.reflect.generics.parser.SignatureParser::advance (37 bytes)
+    254   28             java.util.HashMap::hash (55 bytes)
+    254   29             java.lang.Character::isWhitespace (5 bytes)
+    255   30             java.lang.Character::isWhitespace (9 bytes)
+    256   31             java.lang.CharacterDataLatin1::isWhitespace (23 bytes)
+    257   32             sun.reflect.generics.parser.SignatureParser::parseIdentifier (115 bytes)
+    258   33             java.lang.StringBuilder::append (8 bytes)
+    271   34             java.lang.String::length (6 bytes)
+    312   35             sun.nio.cs.UTF_8$Decoder::decode (640 bytes)
+    312   36             java.util.jar.Manifest$FastInputStream::readLine (167 bytes)
+    323   37             sun.security.util.ManifestDigester::findSection (180 bytes)
+    325   38             java.util.Properties$LineReader::readLine (452 bytes)
+    341   35             sun.nio.cs.UTF_8$Decoder::decode (640 bytes)   made not entrant
+    344   39             sun.nio.cs.UTF_8$Decoder::decode (640 bytes)
+    356   40             sun.security.provider.SHA::implCompress (491 bytes)
+    362   41             java.math.BigInteger::mulAdd (81 bytes)
+    379   42 %           com.sun.crypto.provider.AESCrypt::<clinit> @ 724 (1577 bytes)
+    411   43             java.io.ByteArrayOutputStream::ensureCapacity (16 bytes)
+    413   44             java.lang.AbstractStringBuilder::append (48 bytes)
+    419   45             java.lang.String::getChars (62 bytes)
+    420   46             java.util.HashMap::put (142 bytes)
+    426   47             java.util.HashMap::getEntry (86 bytes)
+    428   48  s          java.io.ByteArrayOutputStream::write (32 bytes)
+    430   49             java.io.DataOutputStream::incCount (20 bytes)
+    430   50             java.lang.StringBuilder::append (8 bytes)
+    451   51             sun.reflect.ClassFileAssembler::emitByte (11 bytes)
+    452   52             sun.reflect.ByteVectorImpl::add (38 bytes)
+    498   53             java.util.HashMap$Entry::<init> (26 bytes)
+    518   54             java.util.Arrays$ArrayList::size (6 bytes)
+    529   55             java.lang.String::<init> (67 bytes)
+    535   56             java.nio.HeapByteBuffer::_get (7 bytes)
+    562   57             java.util.AbstractList$Itr::hasNext (20 bytes)
+    569   58             java.util.HashMap::get (29 bytes)
+    572   59             java.util.HashMap$Entry::getValue (5 bytes)
+    595   60             java.util.ArrayList::access$100 (5 bytes)
+    596   61             java.lang.reflect.Method::getName (5 bytes)
+    605   62             sun.reflect.generics.parser.SignatureParser::parsePackageNameAndSimpleClassTypeSignature (139 bytes)
+    606   63             java.util.HashMap::addEntry (69 bytes)
+    610   64             java.lang.Class::searchMethods (90 bytes)
+    618   65             java.lang.AbstractStringBuilder::<init> (12 bytes)
+Bootstrapping Graal    630   66             java.lang.System::getSecurityManager (4 bytes)
+      0    2             java.lang.Object::equals(Object) (11 bytes)
+      0    1  s          com.oracle.graal.hotspot.bridge.VMToCompilerImpl::compileWarmup() (1 bytes)
+      0    3             java.lang.Object::toString() (36 bytes)
+    635   67             sun.reflect.ClassFileAssembler::emitConstantPoolUTF8 (50 bytes)
+    635   68   !         sun.reflect.UTF8::encode (189 bytes)
+    648   69             sun.reflect.UTF8::utf8Length (81 bytes)
+    685   46             java.util.HashMap::put (142 bytes)   made not entrant
+    687   70             java.util.regex.Pattern$Curly::match0 (174 bytes)
+    690   71             java.util.ArrayList::size (5 bytes)
+    696   72             java.lang.Character::charCount (12 bytes)
+    696   73             java.lang.Character::isHighSurrogate (18 bytes)
+    698   74             java.util.regex.Pattern$Slice::match (79 bytes)
+    702   75             java.lang.ref.Reference::get (5 bytes)
+    702   76             java.util.regex.Pattern$CharProperty::match (56 bytes)
+    705   77             java.util.regex.Pattern$Dot::isSatisfiedBy (34 bytes)
+    705   78             java.lang.Character::codePointAt (51 bytes)
+    705   79             java.util.regex.Pattern$Node::match (27 bytes)
+    716   80             java.util.regex.Matcher::reset (83 bytes)
+    717   81             java.lang.StringBuilder::toString (17 bytes)
+[thread:10] scope: 
+  [thread:10] scope: Compiling
+    [thread:10] scope: Compiling.GraalCompiler
+      [thread:10] scope: Compiling.GraalCompiler.FrontEnd
+        [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier
+          [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining AbstractStringBuilder.<init>@1: exact java.lang.Object.<init>():void: intrinsic
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+    720   70             java.util.regex.Pattern$Curly::match0 (174 bytes)   made not entrant
+    720   76             java.util.regex.Pattern$CharProperty::match (56 bytes)   made not entrant
+              inlining StringBuilder.<init>@3: exact java.lang.AbstractStringBuilder.<init>(int):void: trivial (relevance=1.000000, probability=1.000000, bonus=1.000000, nodes=8)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining Object.toString@4: exact java.lang.StringBuilder.<init>():void: trivial (relevance=1.000000, probability=1.000000, bonus=1.000000, nodes=9)
+    724   82             java.util.regex.Matcher::match (109 bytes)
+    732   83             java.util.regex.Pattern$Curly::match0 (174 bytes)
+    735   84             java.util.HashMap$HashIterator::nextEntry (99 bytes)
+    740   85             java.util.HashMap::createEntry (39 bytes)
+    742   86             java.util.ArrayList$Itr::hasNext (20 bytes)
+    743   87             java.util.HashMap$HashIterator::<init> (63 bytes)
+    745   88             java.util.regex.Pattern$CharProperty::match (56 bytes)
+    747   89             java.util.ArrayList::ensureCapacityInternal (23 bytes)
+    748   90             java.util.ArrayList::ensureExplicitCapacity (26 bytes)
+    753   91             java.util.ArrayList::add (29 bytes)
+    754   92     n       java.lang.Object::getClass (native)   
+    755   93             com.oracle.graal.graph.Graph::access$000 (5 bytes)
+    760   94             java.util.AbstractCollection::<init> (5 bytes)
+    763   95     n       sun.misc.Unsafe::getObject (native)   
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining Object.toString@8: exact java.lang.Object.getClass():Class: intrinsic
+    770   96     n       java.lang.Thread::currentThread (native)   (static)
+    770   97             com.oracle.graal.graph.NodeClass$NodeClassInputsIterator::getOffsets (8 bytes)
+    771   98             com.oracle.graal.graph.NodeClass::access$600 (5 bytes)
+    779   99             java.util.ArrayList::elementData (7 bytes)
+    780  100             java.lang.ThreadLocal::getMap (5 bytes)
+    780  101             java.lang.ThreadLocal::access$400 (5 bytes)
+    780  102             java.util.ArrayList::rangeCheck (22 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.InliningDecisions
+            not inlining Class.getName@11: java.lang.Class.getName0():String (0 bytes): it is a non-intrinsic native method
+    781  103             com.oracle.graal.hotspot.HotSpotGraalRuntime::runtime (24 bytes)
+    781  104             java.util.ArrayList::get (11 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining Object.toString@11: exact java.lang.Class.getName():String: relevance-based (relevance=1.000000, probability=1.000000, bonus=1.000000, nodes=20 <= 300.000000)
+    784   64             java.lang.Class::searchMethods (90 bytes)   made not entrant
+    801  105             java.lang.ThreadLocal$ThreadLocalMap::access$000 (6 bytes)
+    801  106             java.lang.ThreadLocal::get (34 bytes)
+    802  107             java.lang.ThreadLocal$ThreadLocalMap::getEntry (42 bytes)
+    803  108 %           java.lang.Class::searchMethods @ 11 (90 bytes)
+    803  109             com.oracle.graal.graph.NodeClass$NodeClassIterator::forward (161 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining AbstractStringBuilder.append@8: exact java.lang.String.length():int: trivial (relevance=1.000000, probability=1.000000, bonus=1.000000, nodes=6)
+    812  110             com.oracle.graal.hotspot.HotSpotGraalRuntime::getConfig (5 bytes)
+    813  111             com.oracle.graal.graph.NodeClass$NodeClassInputsIterator::getDirectCount (8 bytes)
+    813  112             com.oracle.graal.graph.NodeClass::access$700 (5 bytes)
+    813  113             java.util.ArrayList$Itr::checkForComodification (23 bytes)
+    817  114             java.util.ArrayList::access$200 (5 bytes)
+    817  115             java.util.ArrayList$Itr::next (66 bytes)
+    818  116             com.oracle.graal.debug.internal.DebugScope::getInstance (53 bytes)
+    827  117             com.oracle.graal.hotspot.meta.HotSpotResolvedObjectType::fromClass (76 bytes)
+    831  118             com.oracle.graal.hotspot.bridge.VMToCompilerImpl$FastNodeClassRegistry::type (8 bytes)
+    831  119             com.oracle.graal.graph.NodeClass::get (24 bytes)
+    833  120             com.oracle.graal.hotspot.meta.HotSpotResolvedObjectType::getNodeClass (5 bytes)
+    833  121             com.oracle.graal.hotspot.bridge.VMToCompilerImpl$FastNodeClassRegistry::get (8 bytes)
+    834  122             java.lang.Class::searchMethods (90 bytes)
+    835  123             com.oracle.graal.graph.Node::getNodeClass (8 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.InliningDecisions
+            not inlining AbstractStringBuilder.ensureCapacityInternal@12: exact java.lang.AbstractStringBuilder.expandCapacity(int):void: relevance-based (relevance=0.046107, probability=0.044075, bonus=1.000000, nodes=47 > 13.832026)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining AbstractStringBuilder.append@19: exact java.lang.AbstractStringBuilder.ensureCapacityInternal(int):void: relevance-based (relevance=1.000000, probability=1.000000, bonus=1.000000, nodes=20 <= 300.000000)
+    859  124             com.oracle.graal.graph.Node::id (5 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+    860  125             com.oracle.graal.graph.iterators.AbstractNodeIterable::<init> (5 bytes)
+              inlining String.getChars@58: exact java.lang.System.arraycopy(Object, int, Object, int, int):void: trivial (relevance=1.000000, probability=1.000000, bonus=1.000000, nodes=1)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining AbstractStringBuilder.append@33: exact java.lang.String.getChars(int, int, char[], int):void: relevance-based (relevance=1.046107, probability=1.000000, bonus=1.000000, nodes=18 <= 300.000000)
+    866  126             java.util.BitSet::wordIndex (5 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining StringBuilder.append@2: exact java.lang.AbstractStringBuilder.append(String):AbstractStringBuilder: relevance-based (relevance=1.000000, probability=1.000000, bonus=1.000000, nodes=50 <= 300.000000)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining Object.toString@14: exact java.lang.StringBuilder.append(String):StringBuilder: relevance-based (relevance=2.000000, probability=1.000000, bonus=1.000000, nodes=51 <= 300.000000)
+    878  127             com.oracle.graal.graph.Graph$NodeIterator::forward (62 bytes)
+    884  128             com.oracle.graal.graph.NodeClass$NodeClassIterator::hasNext (18 bytes)
+    887  129             com.oracle.graal.compiler.GraalDebugConfig::checkDebugFilter (18 bytes)
+    887  130             com.oracle.graal.debug.internal.DebugScope::getQualifiedName (5 bytes)
+    888  131             com.oracle.graal.compiler.GraalDebugConfig::isEnabled (23 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining AbstractStringBuilder.append@8: exact java.lang.String.length():int: trivial (relevance=1.000000, probability=1.000000, bonus=1.000000, nodes=6)
+    894  132             com.oracle.graal.debug.Debug::currentScope (16 bytes)
+    895  133             java.util.BitSet::checkInvariants (111 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.InliningDecisions
+            not inlining AbstractStringBuilder.ensureCapacityInternal@12: exact java.lang.AbstractStringBuilder.expandCapacity(int):void: relevance-based (relevance=0.046107, probability=0.044075, bonus=1.000000, nodes=47 > 13.832026)
+    912  134             java.util.AbstractList::<init> (10 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining AbstractStringBuilder.append@19: exact java.lang.AbstractStringBuilder.ensureCapacityInternal(int):void: relevance-based (relevance=1.000000, probability=1.000000, bonus=1.000000, nodes=20 <= 300.000000)
+    916  135             com.oracle.graal.graph.Graph$NodeIterator::checkForDeletedNode (65 bytes)
+    917  136             com.oracle.graal.graph.Graph$NodeIterator::hasNext (27 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions    920 
+            com.oracle.graal.graph.Node::isAlive (13 bytes)
+              inlining String.getChars@58: exact java.lang.System.arraycopy(Object, int, Object, int, int):void: trivial (relevance=1.000000, probability=1.000000, bonus=1.000000, nodes=1)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining AbstractStringBuilder.append@33: exact java.lang.String.getChars(int, int, char[], int):void: relevance-based (relevance=1.046107, probability=1.000000, bonus=1.000000, nodes=11 <= 300.000000)
+    924  138             java.util.ArrayDeque::isEmpty (17 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining StringBuilder.append@2: exact java.lang.AbstractStringBuilder.append(String):AbstractStringBuilder: relevance-based (relevance=1.000000, probability=1.000000, bonus=1.000000, nodes=35 <= 300.000000)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining Object.toString@19: exact java.lang.StringBuilder.append(String):StringBuilder: relevance-based (relevance=2.000000, probability=1.000000, bonus=1.000000, nodes=36 <= 300.000000)
+    931  139             com.oracle.graal.graph.Node::isDeleted (15 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.InliningDecisions
+            not inlining Object.toString@23: java.lang.Object.hashCode():int (0 bytes): no type profile exists
+    946  140             java.lang.StringBuilder::<init> (7 bytes)
+    952   58             java.util.HashMap::get (29 bytes)   made not entrant
+    955  141             com.oracle.graal.graph.NodeClass::getNode (12 bytes)
+    960  142             com.oracle.graal.debug.internal.DebugValue::isConditional (5 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining String.<init>@1: exact java.lang.Object.<init>():void: intrinsic
+    968  143             com.oracle.graal.debug.internal.DebugScope::isMeterEnabled (5 bytes)
+    968  144             com.oracle.graal.debug.Debug::isMeterEnabled (21 bytes)
+    969  145             com.oracle.graal.debug.internal.MetricImpl::add (19 bytes)
+    971  146             com.oracle.graal.debug.internal.MetricImpl::increment (6 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining Arrays.copyOfRange@54: exact java.lang.Math.min(int, int):int: relevance-based (relevance=1.000000, probability=1.000000, bonus=1.000000, nodes=14 <= 300.000000)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining Arrays.copyOfRange@57: exact java.lang.System.arraycopy(Object, int, Object, int, int):void: trivial (relevance=1.088488, probability=1.000000, bonus=1.000000, nodes=1)
+    982  147             com.oracle.graal.graph.NodeClass$NodeClassSuccessorsIterator::getOffsets (8 bytes)
+    982  148             com.oracle.graal.graph.NodeClass::access$900 (5 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining String.<init>@60: exact java.util.Arrays.copyOfRange(char[], int, int):char[]: relevance-based (relevance=1.000000, probability=1.000000, bonus=1.000000, nodes=28 <= 300.000000)    983 
+149             sun.nio.cs.UTF_8$Encoder::encodeArrayLoop (489 bytes)
+    984  150             com.oracle.graal.graph.Graph$NodeIterator::next (5 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining Integer.toUnsignedString@51: exact java.lang.String.<init>(char[], int, int):void: relevance-based (relevance=1.000000, probability=1.000000, bonus=1.000000, nodes=49 <= 300.000000)
+    991  151   !         com.oracle.graal.graph.Graph$NodeIterator::next (31 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining Integer.toHexString@2: exact java.lang.Integer.toUnsignedString(int, int):String: relevance-based (relevance=1.000000, probability=1.000000, bonus=1.000000, nodes=57 <= 300.000000)
+    999  152             java.util.ArrayDeque::peekFirst (10 bytes)
+   1000  153             com.oracle.graal.graph.NodeWorkList$QueueConsumingIterator::dropDeleted (44 bytes)
+   1000  154             java.util.ArrayDeque::peek (5 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining Object.toString@26: exact java.lang.Integer.toHexString(int):String: relevance-based (relevance=2.000000, probability=1.000000, bonus=1.000000, nodes=58 <= 300.000000)
+   1015  155             com.oracle.graal.graph.NodeClass::access$400 (6 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining AbstractStringBuilder.append@8: exact java.lang.String.length():int: trivial (relevance=1.000000, probability=1.000000, bonus=1.000000, nodes=6)
+   1021  156             java.util.BitSet::get (69 bytes)
+   1023  157             com.oracle.graal.graph.NodeClassIterable::<init> (5 bytes)
+   1023  158             com.oracle.graal.graph.NodeClass$NodeClassIterator::<init> (20 bytes)
+   1025  159             com.oracle.graal.hotspot.meta.HotSpotSignature::parseSignature (199 bytes)
+   1026  160             java.lang.Math::max (11 bytes)
+   1033  161             java.lang.ThreadLocal$ThreadLocalMap::access$100 (7 bytes)
+   1033  162             java.lang.ThreadLocal$ThreadLocalMap::set (136 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.InliningDecisions
+            not inlining AbstractStringBuilder.ensureCapacityInternal@12: exact java.lang.AbstractStringBuilder.expandCapacity(int):void: relevance-based (relevance=0.046107, probability=0.044075, bonus=1.000000, nodes=47 > 13.832026)
+   1034  163             java.lang.ThreadLocal::set (30 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining AbstractStringBuilder.append@19: exact java.lang.AbstractStringBuilder.ensureCapacityInternal(int):void: relevance-based (relevance=1.000000, probability=1.000000, bonus=1.000000, nodes=20 <= 300.000000)
+   1036  164             com.oracle.graal.debug.internal.DebugScope::getConfig (10 bytes)
+   1037  165             com.oracle.graal.debug.internal.DebugScope$IndentImpl::setEnabled (6 bytes)
+   1037  166             com.oracle.graal.debug.internal.DebugScope::setLogEnabled (9 bytes)
+   1042  167             com.oracle.graal.graph.NodeClass$NodeClassIterator::next (5 bytes)
+   1042  168   !         com.oracle.graal.graph.NodeClass$NodeClassIterator::next (18 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining String.getChars@58: exact java.lang.System.arraycopy(Object, int, Object, int, int):void: trivial (relevance=1.000000, probability=1.000000, bonus=1.000000, nodes=1)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining AbstractStringBuilder.append@33: exact java.lang.String.getChars(int, int, char[], int):void: relevance-based (relevance=1.046107, probability=1.000000, bonus=1.000000, nodes=18 <= 300.000000)
+   1045  169             com.oracle.graal.graph.NodeClass$NodeClassIterator::nextElement (74 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining StringBuilder.append@2: exact java.lang.AbstractStringBuilder.append(String):AbstractStringBuilder: relevance-based (relevance=1.000000, probability=1.000000, bonus=1.000000, nodes=43 <= 300.000000)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining Object.toString@29: exact java.lang.StringBuilder.append(String):StringBuilder: relevance-based (relevance=2.000000, probability=1.000000, bonus=1.000000, nodes=44 <= 300.000000)
+   1055  170             com.oracle.graal.graph.NodeClass::valueNumberable (5 bytes)
+   1065  171             com.oracle.graal.graph.Node::recordsUsages (2 bytes)
+   1067  172             java.util.ArrayDeque::pollFirst (42 bytes)
+   1067  173             java.util.ArrayDeque::removeFirst (19 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining String.<init>@1: exact java.lang.Object.<init>():void: intrinsic
+   1071  174             java.util.ArrayList$Itr::<init> (6 bytes)
+   1071  175             java.util.ArrayList$Itr::<init> (26 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining Arrays.copyOfRange@54: exact java.lang.Math.min(int, int):int: relevance-based (relevance=1.000000, probability=1.000000, bonus=1.000000, nodes=14 <= 300.000000)
+   1076  176             com.oracle.graal.graph.NodeMap::check (88 bytes)
+   1079  177             com.oracle.graal.nodes.ValueNode::stamp (5 bytes)
+   1079  178             java.lang.Number::<init> (5 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining Arrays.copyOfRange@57: exact java.lang.System.arraycopy(Object, int, Object, int, int):void: trivial (relevance=1.088488, probability=1.000000, bonus=1.000000, nodes=1)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining String.<init>@60: exact java.util.Arrays.copyOfRange(char[], int, int):char[]: relevance-based (relevance=1.000000, probability=1.000000, bonus=1.000000, nodes=25 <= 300.000000)
+   1084  179             com.oracle.graal.graph.Node$NodeUsageIterator::advance (123 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining StringBuilder.toString@13: exact java.lang.String.<init>(char[], int, int):void: relevance-based (relevance=1.000000, probability=1.000000, bonus=1.000000, nodes=42 <= 300.000000)
+   1086  180             com.oracle.graal.graph.Node::usages (31 bytes)
+   1086  181             com.oracle.graal.graph.Node$NodeUsageIterable::<init> (10 bytes)
+   1086  182             com.oracle.graal.graph.Node::access$000 (5 bytes)
+   1088  183             com.oracle.graal.nodes.util.GraphUtil$1::apply (27 bytes)
+            [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining
+              [thread:10] scope: Compiling.GraalCompiler.FrontEnd.HighTier.Inlining.Inlining.InliningDecisions
+              inlining Object.toString@32: exact java.lang.StringBuilder.toString():String: relevance-based (relevance=2.000000, probability=1.000000, bonus=1.000000, nodes=44 <= 300.000000)
+   1091  184             java.util.ArrayList::iterator (10 bytes)
+   1098  185             com.oracle.graal.graph.Node$NodeUsageIterator::hasNext (41 bytes)
+   1100  186             com.oracle.graal.graph.NodeBitMap::isMarked (12 bytes)
+   1101  187             com.oracle.graal.graph.Graph::nodeIdCount (8 bytes)
+   1102  188             com.oracle.graal.graph.Node::graph (5 bytes)
+   1112  189             java.util.ArrayDeque::add (7 bytes)
+   1112  190             java.util.ArrayDeque::addLast (53 bytes)
+   1116  191             com.oracle.graal.graph.Graph::findDuplicate (211 bytes)
+   1117  192     n       java.lang.System::identityHashCode (native)   (static)
+   1118  193             java.util.ArrayDeque::remove (5 bytes)
+   1120  194             java.util.IdentityHashMap::hash (18 bytes)
+   1121  195             com.oracle.graal.debug.internal.DebugScope::isLogEnabled (8 bytes)
+   1122  196             java.util.regex.Matcher::<init> (84 bytes)
+   1127  205     n       java.lang.Object::clone (native)   
+   1130  197   !         java.util.regex.Pattern::matcher (44 bytes)
+   1135  198             com.oracle.graal.debug.internal.DebugScope::updateFlags (89 bytes)
+   1139  199             com.oracle.graal.compiler.GraalDebugConfig::isDumpEnabled (9 bytes)
+   1139  200             com.oracle.graal.compiler.GraalDebugConfig::output (5 bytes)
+   1139  201             com.oracle.graal.compiler.GraalDebugConfig::isLogEnabled (9 bytes)
+   1140  202             com.oracle.graal.compiler.GraalDebugConfig::isMeterEnabled (9 bytes)
+   1140  203             com.oracle.graal.compiler.GraalDebugConfig::isTimeEnabled (9 bytes)
+   1140  204             java.util.IdentityHashMap::maskNull (12 bytes)
+   1141  206             com.oracle.graal.graph.Graph$NodeIterator::<init> (21 bytes)
+   1143  207             com.oracle.graal.nodes.util.GraphUtil::isFloatingNode (4 bytes)
+   1143  208             com.oracle.graal.nodes.ScheduledNode::graph (8 bytes)
+   1143  209             com.oracle.graal.graph.NodeMap::size (6 bytes)
+   1144  210             com.oracle.graal.graph.NodeMap::isNew (17 bytes)
+   1144  211             com.oracle.graal.graph.NodeWorkList$QueueConsumingIterator::hasNext (32 bytes)
+   1144  212             com.oracle.graal.graph.NodeWorkList::access$000 (5 bytes)
+   1145  213             com.oracle.graal.graph.Graph::getMark (5 bytes)
+   1145  214             com.oracle.graal.graph.Graph::getNewNodes (12 bytes)
+   1146  215             com.oracle.graal.graph.Graph$1::iterator (16 bytes)
+   1148  216             com.oracle.graal.graph.Graph$1::<init> (15 bytes)
+   1149  217             com.oracle.graal.phases.common.CanonicalizerPhase$Instance::processNode (190 bytes)
+   1150  218             com.oracle.graal.phases.common.CanonicalizerPhase$Instance::processWorkSet (65 bytes)
+is finding unswitchable?
+   1234  219             com.oracle.graal.graph.NodeWorkList$QueueConsumingIterator::next (5 bytes)
+   1240  220             com.oracle.graal.graph.NodeWorkList::access$102 (7 bytes)
+   1241  221             com.oracle.graal.graph.NodeBitMap::clear (50 bytes)
+   1243  222             com.oracle.graal.graph.NodeWorkList::access$200 (5 bytes)
+   1243  223             com.oracle.graal.graph.NodeWorkList::access$400 (5 bytes)
+   1244  224             com.oracle.graal.phases.common.CanonicalizerPhase::access$600 (4 bytes)
+   1244  225             com.oracle.graal.phases.common.CanonicalizerPhase$Instance::tryGlobalValueNumbering (89 bytes)
+   1249  226             com.oracle.graal.graph.NodeWorkList::access$100 (5 bytes)
+   1249  227             java.util.BitSet::clear (70 bytes)
+   1252  228             com.oracle.graal.graph.NodeWorkList$QueueConsumingIterator::next (83 bytes)
+   1258  229             com.oracle.graal.graph.NodeWorkList::access$010 (12 bytes)
+   1258  230             com.oracle.graal.phases.common.CanonicalizerPhase$Instance::tryCanonicalize (40 bytes)
+   1271  231             com.oracle.graal.phases.common.CanonicalizerPhase$Instance::baseTryCanonicalize (106 bytes)
+   1282  232             com.oracle.graal.phases.common.CanonicalizerPhase$Instance::tryKillUnused (44 bytes)
+   1282  275     n       sun.misc.Unsafe::putObject (native)   
+   1283  233             com.oracle.graal.graph.NodeClass::isCanonicalizable (5 bytes)
+   1284  234             com.oracle.graal.graph.NodeWorkList::access$302 (7 bytes)
+   1284  235             com.oracle.graal.nodes.ScheduledNode::graph (5 bytes)
+   1284  236             com.oracle.graal.graph.NodeMap::get (15 bytes)
+   1285  237             com.oracle.graal.graph.NodeWorkList::<init> (122 bytes)
+   1306  278     n       java.lang.Object::hashCode (native)   
+   1308  238             com.oracle.graal.debug.internal.DebugScope::<init> (213 bytes)
+   1308  280     n       sun.misc.Unsafe::getInt (native)   
+   1328  239             java.util.Collections$UnmodifiableCollection$1::hasNext (10 bytes)
+   1329  240             java.util.Collections$UnmodifiableCollection$1::next (10 bytes)
+   1330  241             com.oracle.graal.debug.internal.DebugValueMap::getName (5 bytes)
+   1330  242             com.oracle.graal.graph.Node$NodeUsageIterator::next (5 bytes)
+   1331  243             com.oracle.graal.graph.Node$NodeUsageIterator::next (51 bytes)
+   1332  244             com.oracle.graal.phases.common.CanonicalizerPhase$Instance::tryInferStamp (74 bytes)
+   1338  245             com.oracle.graal.phases.common.CanonicalizerPhase::access$1300 (4 bytes)
+   1338  246             com.oracle.graal.graph.Node$NodeUsageIterable::isEmpty (16 bytes)
+   1338  247             java.nio.HeapByteBuffer::ix (7 bytes)
+   1339  248             com.oracle.graal.graph.Node::removeUsage (219 bytes)
+   1341  249             com.oracle.graal.graph.NodeClass$2::iterator (39 bytes)
+   1342  250             com.oracle.graal.graph.NodeClass$2::<init> (15 bytes)
+   1342  251             com.oracle.graal.graph.NodeClass$NodeClassSuccessorsIterator::<init> (8 bytes)
+   1342  252             com.oracle.graal.graph.Node::successors (9 bytes)
+   1345  253             com.oracle.graal.graph.NodeClass::getSuccessorIterable (35 bytes)
+   1345  254             com.oracle.graal.graph.NodeClass$NodeClassSuccessorsIterator::<init> (41 bytes)
+   1346  255             com.oracle.graal.graph.NodeClass$2::iterator (5 bytes)
+   1346  256             com.oracle.graal.debug.internal.DebugScope::log (10 bytes)
+   1347  257             com.oracle.graal.debug.Debug::log (15 bytes)
+   1349  258             com.oracle.graal.nodes.ValueNode::inferStamp (2 bytes)
+   1349  259             com.oracle.graal.debug.internal.DebugScope$IndentImpl::log (56 bytes)
+   1351  260             com.oracle.graal.graph.NodeList::get (55 bytes)
+   1351  261             com.oracle.graal.graph.Graph$TypedNodeIterator::current (10 bytes)
+   1351  262             java.util.BitSet::expandTo (23 bytes)
+   1351  263             java.util.BitSet::set (58 bytes)
+   1352  264             com.oracle.graal.graph.NodeClass$1::<init> (15 bytes)
+   1352  265             com.oracle.graal.graph.NodeClass::getInputIterable (35 bytes)
+   1353  266             com.oracle.graal.graph.Node::inputs (9 bytes)
+   1353  267             com.oracle.graal.graph.NodeClass$NodeClassInputsIterator::<init> (8 bytes)
+   1353  268             com.oracle.graal.graph.NodeClass$NodeClassInputsIterator::<init> (41 bytes)
+   1354  269             com.oracle.graal.graph.NodeClass$1::iterator (39 bytes)
+   1355  270             com.oracle.graal.graph.NodeClass$1::iterator (5 bytes)
+   1355  271             com.oracle.graal.graph.iterators.PredicatedProxyNodeIterator::forward (113 bytes)
+   1355  272             com.oracle.graal.graph.NodeBitMap::mark (53 bytes)
+   1357  273             com.oracle.graal.graph.NodeFlood::isMarked (9 bytes)
+   1357  274             java.util.AbstractMap::<init> (15 bytes)
+   1358  276             com.oracle.graal.graph.Node::indexOfLastNonNull (90 bytes)
+   1358  277             com.oracle.graal.graph.Node::incUsageModCount (22 bytes)
+   1358  279             java.lang.String::lastIndexOf (151 bytes)
+   1359  281             com.oracle.graal.debug.internal.DebugScope::getValueMap (5 bytes)
+   1359  282             com.oracle.graal.nodes.FixedWithNextNode::next (5 bytes)
+   1359  283             com.oracle.graal.nodes.type.Stamp::asConstant (2 bytes)
+   1359  284             com.oracle.graal.graph.NodeClass::putNode (10 bytes)
+   1360  285             java.lang.String::startsWith (72 bytes)
+   1361  286             com.oracle.graal.graph.NodeNodeMap::get (6 bytes)
+   1362  287             com.oracle.graal.graph.NodeNodeMap::get (12 bytes)
+   1363  288             com.oracle.graal.phases.common.DeadCodeEliminationPhase::iterateInputs (148 bytes)
+   1363  289             com.oracle.graal.debug.internal.DebugScope::createChild (55 bytes)
+   1365  290   !         com.oracle.graal.debug.internal.DebugScope::scope (139 bytes)
+   1383  238             com.oracle.graal.debug.internal.DebugScope::<init> (213 bytes)   made not entrant
+   1392  291   !         com.oracle.graal.debug.internal.DebugScope::executeScope (69 bytes)
+   1394  292             com.oracle.graal.debug.internal.DebugScope::setConfig (12 bytes)
+   1399  293             java.lang.Enum::ordinal (5 bytes)
+   1399  294             java.util.HashMap$HashIterator::hasNext (13 bytes)
+   1399  295             java.util.ArrayList::indexOf (67 bytes)
+   1400  296             java.util.IdentityHashMap::get (60 bytes)
+   1402  297             java.lang.Short::shortValue (5 bytes)
+   1402  298             com.oracle.graal.nodes.cfg.Block::getId (5 bytes)
+   1402  299             com.oracle.graal.graph.Node$NodeUsageIterable::iterator (5 bytes)
+   1403  300             com.oracle.graal.graph.Node::usageModCount (24 bytes)
+   1403  301             com.oracle.graal.graph.Node$NodeUsageIterator::<init> (30 bytes)
+   1403  302             com.oracle.graal.graph.Node$NodeUsageIterable::iterator (12 bytes)
+   1404  303             java.nio.Bits::getShort (18 bytes)
+   1405  304             java.nio.Bits::makeShort (12 bytes)
+   1405  305             java.nio.HeapByteBuffer::getShort (18 bytes)
+   1406  310     n       java.lang.Class::isInstance (native)   
+   1406  306             java.nio.Buffer::nextGetIndex (38 bytes)
+   1406  307             java.nio.Bits::getShortB (16 bytes)
+   1407  308             com.oracle.graal.nodes.cfg.ControlFlowGraph::getNodeToBlock (5 bytes)
+   1407  309             com.oracle.graal.graph.Node::equals (6 bytes)
+   1407  311             com.oracle.graal.debug.internal.DebugScope$IndentImpl::<init> (55 bytes)
+   1409  312             com.oracle.graal.debug.internal.DebugValueMap::getChildren (19 bytes)
+   1409  313             com.oracle.graal.graph.NodeMap::set (16 bytes)
+   1410  314             java.util.Collections$UnmodifiableCollection::<init> (22 bytes)
+   1410  315             java.util.Collections::unmodifiableList (27 bytes)
+   1410  316             java.util.Collections$UnmodifiableRandomAccessList::<init> (6 bytes)
+   1411  317             java.util.Collections$UnmodifiableList::<init> (11 bytes)
+   1411  318             java.util.Collections$UnmodifiableCollection::iterator (9 bytes)
+   1411  319             java.util.Collections$UnmodifiableCollection$1::<init> (26 bytes)
+   1412  320             java.lang.Float::isNaN (12 bytes)
+   1412  321             java.util.HashMap::<init> (119 bytes)
+   1419  322             com.oracle.graal.graph.iterators.NodeIterator::hasNext (17 bytes)
+   1422  323             com.oracle.graal.graph.Node::predecessor (5 bytes)
+   1422  324             com.oracle.graal.phases.schedule.SchedulePhase::addToLatestSorting (407 bytes)
+   1430  325             com.oracle.graal.phases.common.CanonicalizerPhase$Instance::access$900 (5 bytes)
+   1437  326             java.util.IdentityHashMap::put (123 bytes)
+   1443  327             com.oracle.graal.graph.iterators.NodePredicates$PositiveTypePredicate::apply (35 bytes)
+   1445  328             com.oracle.graal.graph.Graph$TypedNodeIterator::skipDeleted (23 bytes)
+   1447  329             java.util.HashMap::put (142 bytes)
+   1467  330             java.util.ArrayList::set (20 bytes)
+   1468  331             com.oracle.graal.graph.Node::addUsage (152 bytes)
+   1479  332             java.util.AbstractList$Itr::checkForComodification (23 bytes)
+   1479  333   !         java.util.AbstractList$Itr::next (45 bytes)
+   1483  334             com.oracle.graal.options.OptionValue::getValue (23 bytes)
+   1484  335             com.oracle.graal.phases.common.DeadCodeEliminationPhase::deleteNodes (101 bytes)
+   1485  336             com.oracle.graal.graph.Node::updateUsages (135 bytes)
+   1491  337             com.oracle.graal.graph.NodeClass::updateInputSuccInPlace (159 bytes)
+   1509  338             com.oracle.graal.graph.NodeClass::clearInputs (75 bytes)
+   1514  339             java.util.AbstractList$Itr::<init> (6 bytes)
+   1515  340             java.util.AbstractList$Itr::<init> (31 bytes)
+   1515  341             java.util.LinkedHashMap$Entry::<init> (10 bytes)
+   1515  342             com.oracle.graal.nodes.ValueNode::isConstant (5 bytes)
+   1526  343             com.oracle.graal.graph.NodeFlood::add (35 bytes)
+   1529   83             java.util.regex.Pattern$Curly::match0 (174 bytes)   made not entrant
+   1531  344             com.oracle.graal.graph.Graph::register (142 bytes)
+   1547  345             com.oracle.graal.graph.Node::clearInputs (114 bytes)
+   1552  346             com.oracle.graal.graph.NodeList::size (5 bytes)
+   1552  347             java.util.regex.Pattern$Curly::match0 (174 bytes)
+   1565  348             com.oracle.graal.graph.Node::initialize (133 bytes)
+   1594  349             com.oracle.graal.nodes.type.Stamp::kind (5 bytes)
+   1594  350             com.oracle.graal.nodes.ConstantNode::recordsUsages (4 bytes)
+   1596  326             java.util.IdentityHashMap::put (123 bytes)   made not entrant
+   1597  351     n       java.lang.Class::isPrimitive (native)   
+   1602  352             com.oracle.graal.graph.NodeClass::isLeafNode (5 bytes)
+   1607  353             java.lang.String::lastIndexOf (52 bytes)
+   1630  354             com.oracle.graal.debug.internal.DebugScope::<init> (213 bytes)
+   1636  204             java.util.IdentityHashMap::maskNull (12 bytes)   made not entrant
+is full unrolling
+   1638  337             com.oracle.graal.graph.NodeClass::updateInputSuccInPlace (159 bytes)   made not entrant
+   1644  355             java.util.ArrayList::<init> (12 bytes)
+is full unrolling
+   1646  356             java.util.HashMap::get (29 bytes)
+   1652  357             java.util.IdentityHashMap$IdentityHashMapIterator::hasNext (50 bytes)
+   1655  358             com.oracle.graal.java.FrameStateBuilder::localAt (7 bytes)
+   1662  359             com.oracle.graal.graph.NodeClass::updateInputSuccInPlace (159 bytes)
+   1664  360             com.oracle.graal.graph.NodeBitMap::isNew (17 bytes)
+   1688  163             java.lang.ThreadLocal::set (30 bytes)   made not entrant
+   1694  361             com.oracle.graal.graph.NodeClass::valueNumber (200 bytes)
+   1697  362             com.oracle.graal.nodes.calc.BinaryNode::x (5 bytes)
+   1697   46             java.util.HashMap::put (142 bytes)   made zombie
+   1697   35             sun.nio.cs.UTF_8$Decoder::decode (640 bytes)   made zombie
+   1699  363             com.oracle.graal.nodes.calc.CompareNode::x (5 bytes)
+   1699   76             java.util.regex.Pattern$CharProperty::match (56 bytes)   made zombie
+   1699   58             java.util.HashMap::get (29 bytes)   made zombie
+   1699   64             java.lang.Class::searchMethods (90 bytes)   made zombie
+   1701   70             java.util.regex.Pattern$Curly::match0 (174 bytes)   made zombie
+   1704  364             com.oracle.graal.graph.Graph$TypedNodeIterator::findNext (61 bytes)
+   1705  365             com.oracle.graal.graph.Graph::access$100 (4 bytes)
+   1706  366             com.oracle.graal.nodes.cfg.Block::getEndNode (5 bytes)
+   1711  367             com.oracle.graal.nodes.cfg.Block::getBeginNode (5 bytes)
+   1715  368             com.oracle.graal.nodes.cfg.Block::getDominator (5 bytes)
+   1716  369             com.oracle.graal.phases.schedule.SchedulePhase::earliestBlock (242 bytes)
+   1719  370             java.util.ArrayList::<init> (44 bytes)
+   1721  371             com.oracle.graal.phases.schedule.SchedulePhase::addToEarliestSorting (301 bytes)
+   1888  372             com.oracle.graal.graph.Node::hashCode (5 bytes)
+   1889  373             java.util.HashMap$Entry::getKey (5 bytes)
+   1889  374             com.oracle.graal.graph.iterators.AbstractNodeIterable::first (26 bytes)
+   1889  375             com.oracle.graal.graph.iterators.FilteredNodeIterable::and (14 bytes)
+   1891  376             com.oracle.graal.graph.iterators.NodePredicates::and (47 bytes)
+   1891  377             com.oracle.graal.graph.iterators.NodePredicate::and (6 bytes)
+   1892  378             com.oracle.graal.nodes.cfg.ControlFlowGraph::commonDominator (75 bytes)
+   1893  379             com.oracle.graal.phases.schedule.SchedulePhase::assignBlockToNode (328 bytes)
+   1896  380             java.util.Arrays::fill (21 bytes)
+   1898  381             com.oracle.graal.graph.iterators.FilteredNodeIterable::iterator (25 bytes)
+   1899  382             com.oracle.graal.graph.iterators.PredicatedProxyNodeIterator::<init> (20 bytes)
+   1899  380             java.util.Arrays::fill (21 bytes)   made not entrant
+   1899  383             com.oracle.graal.graph.iterators.NodeIterator::<init> (5 bytes)
+   1899  384             com.oracle.graal.graph.iterators.NodePredicates::alwaysTrue (4 bytes)
+   1899  385             com.oracle.graal.graph.iterators.NodePredicates::isNull (4 bytes)
+   1899  386             com.oracle.graal.graph.iterators.FilteredNodeIterable::<init> (24 bytes)
+   1900  387             java.util.HashSet::add (20 bytes)
+   1900  388             java.util.AbstractSet::<init> (5 bytes)
+   1900  389             java.lang.Class::arrayContentsEq (70 bytes)
+   1901  390             java.lang.Integer::valueOf (54 bytes)
+   1902  391             com.oracle.graal.java.FrameStateBuilder::clearNonLiveLocals (38 bytes)
+   1905  392             com.oracle.graal.graph.NodeClass::getNodeList (12 bytes)
+   1905  393             com.oracle.graal.java.FrameStateBuilder::localsSize (6 bytes)
+   1906  394             com.oracle.graal.graph.NodeList::replaceFirst (37 bytes)
+   1907  395             com.oracle.graal.phases.common.CanonicalizerPhase$Instance::performReplacement (523 bytes)
+   1914  396             com.oracle.graal.nodes.calc.BinaryNode::y (5 bytes)
+   1914  397             com.oracle.graal.graph.NodeClass::clearSuccessors (75 bytes)
+   1916  398             com.oracle.graal.graph.iterators.NodeIterator::next (5 bytes)
+   1918  399             com.oracle.graal.graph.iterators.NodeIterator::next (31 bytes)
+   1921  400             com.oracle.graal.graph.Node::updatePredecessor (129 bytes)
+   1921  401             sun.misc.SharedSecrets::getJavaLangAccess (4 bytes)
+   1921  402             java.lang.Integer::intValue (5 bytes)
+   1921  403             com.oracle.graal.graph.NodeList::<init> (140 bytes)
+   1929  404             com.oracle.graal.graph.iterators.AbstractNodeIterable::snapshot (43 bytes)
+is finding unswitchable?
+is finding unswitchable?
+is finding unswitchable?
+   1940  405             com.oracle.graal.phases.common.DeadCodeEliminationPhase::iterateSuccessors (88 bytes)
+   1951  406             com.oracle.graal.phases.schedule.SchedulePhase::assignBlockToNodes (173 bytes)
+   1971  407             com.oracle.graal.graph.Graph$MapReplacement::replacement (24 bytes)
+   1975  408             com.oracle.graal.nodes.type.IntegerStamp::asConstant (27 bytes)
+   1976  409             com.oracle.graal.phases.graph.ComputeProbabilityClosure::access$000 (5 bytes)
+   1976  410             com.oracle.graal.nodes.cfg.BlockMap::get (10 bytes)
+   1977  411             com.oracle.graal.graph.iterators.NodePredicates$IsNotNullPredicate::apply (10 bytes)
+   1977  412             java.lang.Boolean::booleanValue (5 bytes)
+   1977  413             com.oracle.graal.nodes.cfg.ControlFlowGraph::identifyBlock (207 bytes)
+   2008  414             com.oracle.graal.nodes.cfg.Block::getSuccessors (5 bytes)
+   2008  415             com.oracle.graal.compiler.alloc.Interval::currentFrom (8 bytes)
+   2008  416             com.oracle.graal.lir.LIRIntrospection::forEach (196 bytes)
+   2013  417             com.oracle.graal.bytecode.Bytes::beU1 (8 bytes)
+   2013  418             com.oracle.graal.bytecode.BytecodeStream::currentBC (29 bytes)
+   2020  419             com.oracle.graal.nodes.IfNode::condition (5 bytes)
+   2026  420             com.oracle.graal.nodes.IfNode::falseSuccessor (5 bytes)
+   2033  359             com.oracle.graal.graph.NodeClass::updateInputSuccInPlace (159 bytes)   made not entrant
+   2035  421             sun.misc.VM::isBooted (4 bytes)
+   2043  422             com.oracle.graal.graph.NodeList::count (5 bytes)
+   2043  423             com.oracle.graal.graph.NodeClass::updateInputListCopy (71 bytes)
+   2058  424             com.oracle.graal.graph.NodeClass::updateInputSuccInPlace (159 bytes)
+is finding unswitchable?
+is finding unswitchable?
+is finding unswitchable?
+   2077  425             com.oracle.graal.graph.NodeClass$5::replacement (71 bytes)
+   2081  426             com.oracle.graal.nodes.cfg.ControlFlowGraph::identifyBlocks (316 bytes)
+   2115  416             com.oracle.graal.lir.LIRIntrospection::forEach (196 bytes)   made not entrant
+   2182  427             java.lang.Math::min (46 bytes)
+   2183  428             java.util.IdentityHashMap::put (123 bytes)
+   2189  429             com.oracle.graal.phases.common.CanonicalizerPhase$Instance$3::run (15 bytes)
+   2189  430             java.util.HashMap$KeyIterator::next (8 bytes)
+   2192  431             com.oracle.graal.graph.NodeList$1::hasNext (48 bytes)
+   2192  432             com.oracle.graal.graph.NodeList::access$200 (5 bytes)
+   2192  433             com.oracle.graal.debug.Debug::printf (24 bytes)
+   2194  434             java.util.Arrays::fill (21 bytes)
+   2196  435             com.oracle.graal.graph.iterators.NodePredicate::<init> (5 bytes)
+   2196  436             com.oracle.graal.lir.LIRIntrospection::forEach (196 bytes)
+   2201  437             java.util.HashMap::initHashSeedAsNeeded (61 bytes)
+   2202  438             com.oracle.graal.api.meta.Value::getKind (5 bytes)
+   2202  439             com.oracle.graal.api.code.ValueUtil::isRegister (23 bytes)
+   2203  436             com.oracle.graal.lir.LIRIntrospection::forEach (196 bytes)   made not entrant
+   2203  440             com.oracle.graal.lir.LIRIntrospection::forEach (196 bytes)
+   2214  441             java.util.BitSet::or (105 bytes)
+   2219  442             com.oracle.graal.lir.LIRInstruction$ValueProcedure::<init> (5 bytes)
+   2219  443             com.oracle.graal.lir.LIRValueUtil::isVariable (23 bytes)
+   2253  444             com.oracle.graal.compiler.alloc.LinearScan::operandNumber (74 bytes)
+   2258  445             com.oracle.graal.compiler.alloc.Interval::from (8 bytes)
+   2258  446 %           com.oracle.graal.compiler.alloc.LinearScan::sortIntervalsBeforeAllocation @ 119 (175 bytes)
+   2267  447             com.oracle.graal.api.code.RegisterValue::getRegister (5 bytes)
+   2267  448             com.oracle.graal.api.code.ValueUtil::asRegister (26 bytes)
+   2269  449             com.oracle.graal.compiler.alloc.Interval::location (5 bytes)
+   2272  450             com.oracle.graal.compiler.alloc.Range::intersectsAt (191 bytes)
+   2273  451             com.oracle.graal.compiler.alloc.LinearScanWalker::setUsePos (109 bytes)
+   2276  452             com.oracle.graal.compiler.alloc.Interval::to (48 bytes)
+   2278  453             com.oracle.graal.compiler.alloc.LinearScanWalker::freeCollectInactiveFixed (87 bytes)
+   2278  454             com.oracle.graal.compiler.alloc.IntervalWalker::walkTo (423 bytes)
+   2286  455             com.oracle.graal.compiler.alloc.Interval::currentIntersectsAt (12 bytes)
+   2289  456             com.oracle.graal.compiler.alloc.LinearScanWalker::freeCollectInactiveAny (38 bytes)
+   2294  457             com.oracle.graal.api.code.Register::equals (105 bytes)
+   2294  458             com.oracle.graal.compiler.alloc.Interval$RegisterBindingLists::addToListSortedByCurrentFromPositions (72 bytes)
+   2304  459             com.oracle.graal.compiler.alloc.LinearScan::intervalFor (35 bytes)
+   2304  460             com.oracle.graal.lir.LIR::lir (12 bytes)
+   2313  461             com.oracle.graal.lir.LIRInstruction::id (5 bytes)
+ in 1806 ms (compiled 3 methods)
+   2434  462 %           java.util.Arrays::fill @ 5 (21 bytes)
+   2472  172             java.util.ArrayDeque::pollFirst (42 bytes)   made not entrant
+   2477  463 %           com.amd.aparapi.sample.MatMul.Main::main @ 34 (196 bytes)
+   2484  463 %           com.amd.aparapi.sample.MatMul.Main::main @ -2 (196 bytes)   made not entrant
+   2505  464             com.amd.aparapi.sample.MatMul.Main$1::run (76 bytes)
+   2509  465 %           com.amd.aparapi.sample.MatMul.Main$1::run @ 23 (76 bytes)
+   2514   83             java.util.regex.Pattern$Curly::match0 (174 bytes)   made zombie
+   2514  466             com.amd.aparapi.internal.kernel.KernelRunner::vecExecution (30 bytes)
+   2514  467             com.amd.aparapi.Kernel$KernelState::setGlobalId (8 bytes)
+   2515  468             com.amd.aparapi.Kernel::getGlobalId (10 bytes)
+   2515  469             com.amd.aparapi.Kernel$KernelState::getGlobalId (7 bytes)
+   2516  470             com.amd.aparapi.Kernel$KernelState::getGlobalIds (5 bytes)
+   2516  204             java.util.IdentityHashMap::maskNull (12 bytes)   made zombie
+   2537  471             com.amd.aparapi.Kernel$KernelState::setLocalId (8 bytes)
+   2537  238             com.oracle.graal.debug.internal.DebugScope::<init> (213 bytes)   made zombie
+   2537  472             com.amd.aparapi.internal.kernel.KernelRunner::access$000 (7 bytes)
+   2542  473             com.amd.aparapi.internal.kernel.KernelRunner$1::run (570 bytes)
+   2546  326             java.util.IdentityHashMap::put (123 bytes)   made zombie
+   2546  474             com.amd.aparapi.Range::getLocalSize (28 bytes)
+   2547  475             com.amd.aparapi.Kernel$KernelState::setGroupId (8 bytes)
+   2547  337             com.oracle.graal.graph.NodeClass::updateInputSuccInPlace (159 bytes)   made zombie
+   2547  476             com.amd.aparapi.Range::getDims (5 bytes)
+Execution mode=JTP
+Time = 67343469
+   2552  106             java.lang.ThreadLocal::get (34 bytes)   made not entrant
+   2553  161             java.lang.ThreadLocal$ThreadLocalMap::access$100 (7 bytes)   made not entrant
