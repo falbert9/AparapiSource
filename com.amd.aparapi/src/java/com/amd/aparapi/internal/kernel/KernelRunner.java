@@ -112,7 +112,6 @@ public class KernelRunner extends KernelRunnerJNI{
    public KernelRunner(Kernel _kernel) {
       kernel = _kernel;
    }
-
    /**
     * <code>Kernel.dispose()</code> delegates to <code>KernelRunner.dispose()</code> which delegates to <code>disposeJNI()</code> to actually close JNI data structures.<br/>
     * 
@@ -297,7 +296,7 @@ public class KernelRunner extends KernelRunnerJNI{
          final int iterations = _range.getLocalSize(0) * _range.getLocalSize(1) * _range.getLocalSize(2) * _range.getNumGroups(0) * _range.getNumGroups(1) * _range.getNumGroups(2);
 
          //finds the number of threads that should be run
-         int threads = 1;//Runtime.getRuntime().availableProcessors();
+         int threads = Runtime.getRuntime().availableProcessors();
 
          //finds the number of kernels per thread
          int kpThread = iterations / threads;

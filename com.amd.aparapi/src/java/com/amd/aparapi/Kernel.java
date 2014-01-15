@@ -247,6 +247,14 @@ public abstract class Kernel implements Cloneable {
       }
    }
 
+   public void incrementState()
+   {
+      //increment group id
+      kernelState.setGroupId(0,(kernelState.getGroupIds()[0] + 1));
+      //increment global id
+      kernelState.setGlobalId(0,(kernelState.getGlobalIds()[0] + 1));
+   }
+
    public void vecExecution(int vec)
    {
       for(int i = 0; i < vec; i++)

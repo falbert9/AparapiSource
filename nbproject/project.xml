@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.java.j2seproject</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
+            <name>Aparapi</name>
+            <source-roots>
+                <root id="src.dir"/>
+                <root id="src2.dir"/>
+                <root id="src3.dir"/>
+                <root id="src4.dir"/>
+                <root id="src5.dir"/>
+                <root id="java.dir"/>
+                <root id="src6.dir"/>
+                <root id="src7.dir"/>
+                <root id="src8.dir"/>
+                <root id="src9.dir"/>
+                <root id="src10.dir"/>
+                <root id="src11.dir"/>
+                <root id="src12.dir"/>
+                <root id="src13.dir"/>
+                <root id="src14.dir"/>
+                <root id="src15.dir"/>
+                <root id="src16.dir"/>
+                <root id="src17.dir"/>
+            </source-roots>
+            <test-roots>
+                <root id="test.src.dir"/>
+                <root id="test.java.dir"/>
+            </test-roots>
+        </data>
+    </configuration>
+</project>

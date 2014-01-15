@@ -66,7 +66,7 @@ public class Main{
 
    public static void main(String[] _args) {
 
-      final int size = 1024;
+      final int size = 512;
 
       /** Input int arrays for which multiplication values need to be computed. */
       final int[] a = new int[size*size];
@@ -115,17 +115,18 @@ public class Main{
       Main cpuTest = new Main();
       cpuTest.cpuMultMatrices(a, b, c2, size);
       
-      /*boolean correct = true;
+      boolean correct = true;
       for(int i = 0; i < (size*size); i++)
       {
          if(c[i] != c2[i])
          {
             System.out.println("Error at " + i + ": " + c[i] + " != " + c2[1]);
             correct = false;
+            break;
          }
       }
       if(correct)
-         System.out.println("YAY!!");*/
+         System.out.println("YAY!!");
       // Display computed values.
       /*for (int i = 0; i < size; i++) {
 	for(int j= 0; j < size; j++) {
