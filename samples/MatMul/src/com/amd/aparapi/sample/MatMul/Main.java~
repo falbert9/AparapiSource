@@ -66,7 +66,7 @@ public class Main{
 
    public static void main(String[] _args) {
 
-      final int size = 512;
+      final int size = 100;
 
       /** Input int arrays for which multiplication values need to be computed. */
       final int[] a = new int[size*size];
@@ -76,14 +76,19 @@ public class Main{
       final int[] c = new int[size*size];
       int[] c2 = new int[size*size];
 
+      final int[] cCheck = new int[size*size];
+
       /** Initialize input array. */
       for (int i = 0; i < size; i++) {
 	for(int j = 0; j < size; j++) {
           a[i*size+j] = i+j+1;
 	  b[i*size+j] = i+j+1;
+          cCheck[i*size+j] = 0;
 	}
       }
-
+     
+      Main cpuTest = new Main();
+      cpuTest.cpuMultMatrices(a, b, c2, size);
 
       long startT = System.nanoTime();
 
@@ -98,49 +103,65 @@ public class Main{
 	    {
 	        sum += a[i*size+k] * b[k*size+j];
 	    }
+            //cCheck[gid] = 1;
 	    c[gid] = sum;
+            //cCheck[gid] = 1;
          }
       };
 
       // Execute Kernel.
-      kernel.setExecutionMode(Kernel.EXECUTION_MODE.GPU);
+      kernel.setExecutionMode(Kernel.EXECUTION_MODE.BOTH);
       kernel.execute(Range.create(size*size));
 
       long endT = System.nanoTime();
+
+        /*try {
+	    Thread.sleep(50000);
+	} catch(InterruptedException ex) {
+	    Thread.currentThread().interrupt();
+	}*/
+
+      /*for(int i = 0; i < size*size; i++)
+      {
+         if(cCheck[i] != 1)
+            System.out.println("Miscount at: " + i + " = " + cCheck[i] + " : " + c[i] + " != " + c2[i]);
+      }*/
 
       // Report target execution mode: GPU or JTP (Java Thread Pool).
       System.out.println("Execution mode=" + kernel.getExecutionMode());
       System.out.println("Time = " + (endT - startT));
 
-      Main cpuTest = new Main();
-      cpuTest.cpuMultMatrices(a, b, c2, size);
+      
       
       boolean correct = true;
       for(int i = 0; i < (size*size); i++)
       {
          if(c[i] != c2[i])
          {
-            System.out.println("Error at " + i + ": " + c[i] + " != " + c2[1]);
+            System.out.println("Error at " + i + ": " + c[i] + " != " + c2[i] + " and " + cCheck[i]);
             correct = false;
-            break;
+            //break;
          }
       }
       if(correct)
          System.out.println("YAY!!");
       // Display computed values.
-      /*for (int i = 0; i < size; i++) {
+      /*else {
+      for (int i = 0; i < size; i++) {
 	for(int j= 0; j < size; j++) {
-         System.out.printf("%d ", c[i*size+j]);
+         System.out.println(c[i*size+j] + " : " + c2[i*size+j]);
 	}
 	System.out.println();
       }
 	System.out.println();
+      }//end else*/
+      /*
       for(int i=0; i < size; i++){
 	for(int j = 0; j < size; j++){
-	  System.out.printf("%d ",a[i*size+j]);
+	  System.out.printf("%d ",c2[i*size+j]);
 	}
 	System.out.println();
-	}*/
+      }*/
       // Dispose Kernel resources.
       kernel.dispose();
    }

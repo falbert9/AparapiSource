@@ -215,20 +215,280 @@ public class KernelRunner extends KernelRunnerJNI{
       }
       return capabilitiesSet.contains(OpenCL.CL_KHR_GL_SHARING);
    }
+   
+   private long executeBothOld(final String _entrypointName, final Range _range, final int _passes) throws AparapiException {
+       System.out.println("Executing Both");
+       //Total number of kernels that need to be run
+       final int iterations = _range.getLocalSize(0) * _range.getLocalSize(1) * _range.getLocalSize(2) * _range.getNumGroups(0) * _range.getNumGroups(1) * _range.getNumGroups(2);
+         
+       //Number of kernels to be run on the CPU
+       int cpuKernels = iterations / 2;
+       //int cpuKernels = iterations;
+         
+       //Number of kernels to be run on the GPU
+       final int gpuKernels = iterations - cpuKernels;
+       
+       //Barrier for CPU, GPU, and dispatch
+       final CyclicBarrier bothBarrier = new CyclicBarrier(3);
+       
+       final Range rangeGPU = Range.create(gpuKernels);
+       final Range rangeCPU = Range.create(cpuKernels);
+       //GPU Execution
+       threadPool.submit(new Runnable(){
+            @Override public void run() {
+              /*try {
+                  Thread.sleep(5000);
+              } catch(InterruptedException ex) {
+                  Thread.currentThread().interrupt();
+              }*/
+              try{ 
+                  //executeOpenCL(_entrypointName, _range, _passes);
+                  executeOpenCL(_entrypointName, rangeGPU, _passes);
+               }
+               catch (final AparapiException e) {
+                   System.out.println("FAIL");
+                  warnFallBackAndExecute(_entrypointName, _range, _passes, e);
+               }
+               //System.out.println("Barrier 1 GPU");
+               await(bothBarrier); // This thread will rendezvous with dispatch thread here. This is effectively a join.
+               //System.out.println("Barrier 1 end GPU");
+            }
+         });
+       threadPool.submit(new Runnable(){
+            @Override public void run() {
+              executeJavaFromX(rangeCPU,_passes,gpuKernels);
+               //System.out.println("Barrier 1 GPU");
+               await(bothBarrier); // This thread will rendezvous with dispatch thread here. This is effectively a join.
+               //System.out.println("Barrier 1 end GPU");
+            }
+         });
+       await(bothBarrier);
+       System.out.println("Done Both");
+       return 0;
+   }
+   private long executeBoth(final String _entrypointName, final Range _range, final int _passes) throws AparapiException {
+       
+          //System.out.println("Executing Both");
+          //Total number of kernels that need to be run
+         final int iterations = _range.getLocalSize(0) * _range.getLocalSize(1) * _range.getLocalSize(2) * _range.getNumGroups(0) * _range.getNumGroups(1) * _range.getNumGroups(2);
 
-   /**
-    * Execute using a Java thread pool. Either because we were explicitly asked to do so, or because we 'fall back' after discovering an OpenCL issue.
-    * 
-    * @param _range
-    *          The globalSize requested by the user (via <code>Kernel.execute(globalSize)</code>)
-    * @param _passes
-    *          The # of passes requested by the user (via <code>Kernel.execute(globalSize, passes)</code>). Note this is usually defaulted to 1 via <code>Kernel.execute(globalSize)</code>.
-    * @return
-    */
-   private long executeJava(final Range _range, final int _passes) {
+         //finds the number of threads that should be run
+         int threads = Runtime.getRuntime().availableProcessors();
+         
+         //Number of kernels to be run on the CPU
+         int cpuKernels = iterations / 2;
+         //int cpuKernels = iterations;
+         
+         //Number of kernels to be run on the GPU
+         int gpuKernels = iterations - cpuKernels;
+
+         //finds the number of kernels per thread
+         int kpThread = cpuKernels / threads;
+         
+         //finds the number remaining
+         int kRemain = cpuKernels % threads;
+         
+         //System.out.println("Iterations: " + iterations);
+         //System.out.println("cpu: " + cpuKernels);
+         //System.out.println("gpu: " + gpuKernels);
+
+         //final int globalGroups = _range.getNumGroups(0) * _range.getNumGroups(1) * _range.getNumGroups(2);
+
+         //System.out.println("Global Groups: " + globalGroups);
+         /**
+          * This joinBarrier is the barrier that we provide for the kernel threads to rendezvous with the current dispatch thread.
+          * So this barrier is threadCount+1 wide (the +1 is for the dispatch thread)
+          */
+         final CyclicBarrier joinBarrier = new CyclicBarrier(threads + 2);
+
+         /**
+          * This localBarrier is only ever used by the kernels.  If the kernel does not use the barrier the threads 
+          * can get out of sync, we promised nothing in JTP mode.
+          *
+          * As with OpenCL all threads within a group must wait at the barrier or none.  It is a user error (possible deadlock!)
+          * if the barrier is in a conditional that is only executed by some of the threads within a group.
+          * 
+          * Kernel developer must understand this.
+          * 
+          * This barrier is threadCount wide.  We never hit the barrier from the dispatch thread.
+          */
+         final CyclicBarrier localBarrier = new CyclicBarrier(threads);
+
+         //System.out.println("Passes: " + _passes);
+         for (int passId = 0; passId < _passes; passId++) {
+            /**
+              * Note that we emulate OpenCL by creating one thread per localId (across the group).
+              * 
+              * So threadCount == range.getLocalSize(0)*range.getLocalSize(1)*range.getLocalSize(2);
+              * 
+              * For a 1D range of 12 groups of 4 we create 4 threads. One per localId(0).
+              * 
+              * We also clone the kernel 4 times. One per thread.
+              * 
+              * We create local barrier which has a width of 4
+              *         
+              *    Thread-0 handles localId(0) (global 0,4,8)
+              *    Thread-1 handles localId(1) (global 1,5,7)
+              *    Thread-2 handles localId(2) (global 2,6,10)
+              *    Thread-3 handles localId(3) (global 3,7,11)
+              *    
+              * This allows all threads to synchronize using the local barrier.
+              * 
+              * Initially the use of local buffers seems broken as the buffers appears to be per Kernel.
+              * Thankfully Kernel.clone() performs a shallow clone of all buffers (local and global)
+              * So each of the cloned kernels actually still reference the same underlying local/global buffers. 
+              * 
+              * If the kernel uses local buffers but does not use barriers then it is possible for different groups
+              * to see mutations from each other (unlike OpenCL), however if the kernel does not us barriers then it 
+              * cannot assume any coherence in OpenCL mode either (the failure mode will be different but still wrong) 
+              * 
+              * So even JTP mode use of local buffers will need to use barriers. Not for the same reason as OpenCL but to keep groups in lockstep.
+              * 
+              **/
+             /*
+              * Threads per kernel. Declared outside the for loop so that the value from the last iteration can be used to determine the starting number
+              * for the globalIds assigned to kernels inside the thread.
+              */
+             
+             final Kernel kernelCPU = kernel.clone();
+             //starts the GPUs in a new thread
+             final Range rangeGPU = Range.create(gpuKernels);
+             //_range.setGlobalSize_0(gpuKernels);
+             threadPool.submit(new Runnable(){
+                  @Override public void run() {
+                    /*try {
+                        Thread.sleep(5000);
+                    } catch(InterruptedException ex) {
+                        Thread.currentThread().interrupt();
+                    }*/
+                    try{ 
+                        //executeOpenCL(_entrypointName, _range, _passes);
+                        executeOpenCL(_entrypointName, rangeGPU, _passes);
+                     }
+                     catch (final AparapiException e) {
+                         System.out.println("FAIL");
+                        warnFallBackAndExecute(_entrypointName, _range, _passes, e);
+                     }
+                     //System.out.println("Barrier 1 GPU");
+                     await(joinBarrier); // This thread will rendezvous with dispatch thread here. This is effectively a join.
+                     //System.out.println("Barrier 1 end GPU");
+                  }
+               });
+             //number of kernels the last thread contained 
+             int tKernelsLast = 0;
+             //the startID of the last kernel
+             int startIdLast = gpuKernels;
+             for (int id = 0; id < threads; id++) {
+               final int threadId = id;
+               final int startId = tKernelsLast + startIdLast;
+               //System.out.println("StartID = " + startId);
+               startIdLast = startId;
+
+               final int tKernels;
+               if(kRemain > 0)
+               {
+                  tKernels = kpThread + 1;
+                  kRemain--;
+               }
+               else
+               {
+                  tKernels = kpThread;
+               }
+               //System.out.println("Tkernels = " + tKernels);
+               tKernelsLast = tKernels;
+               /**
+                *  We clone one kernel for each thread.
+                *  
+                *  They will all share references to the same range, localBarrier and global/local buffers because the clone is shallow.
+                *  We need clones so that each thread can assign 'state' (localId/globalId/groupId) without worrying 
+                *  about other threads.   
+                */
+               final Kernel kernelCloneCPU = kernelCPU.clone();
+               final KernelState kernelState = kernelCloneCPU.getKernelState();
+
+               final Range rangeCPU = Range.create(cpuKernels);
+               kernelState.setRange(rangeCPU);
+               kernelState.setLocalBarrier(localBarrier);
+               kernelState.setPassId(passId);
+
+               threadPool.submit(new Runnable(){
+                  @Override public void run() {
+                     for (int globalGroupId = 0; globalGroupId < tKernels; globalGroupId++) {
+
+                        //if (_range.getDims() == 1) {
+                           kernelState.setLocalId(0, (threadId % rangeCPU.getLocalSize(0)));
+                           kernelState.setGlobalId(0, (startId + globalGroupId));
+                           //System.out.println("GID: " + startId + " + " + globalGroupId + " = " + kernelState.getGlobalIds()[0]);
+                           kernelState.setGroupId(0, globalGroupId);
+                        
+                        /*} else if (_range.getDims() == 2) {
+
+                           kernelState.setLocalId(0, (threadId % _range.getLocalSize(0))); // threadId % localWidth =  (for 33 = 1 % 4 = 1)
+                           kernelState.setLocalId(1, (threadId / _range.getLocalSize(0))); // threadId / localWidth = (for 33 = 1 / 4 == 0)
+
+                           final int groupInset = globalGroupId % _range.getNumGroups(0); // 4%3 = 1
+                           kernelState.setGlobalId(0, ((groupInset * _range.getLocalSize(0)) + kernelState.getLocalIds()[0])); // 1*4+1=5
+
+                           final int completeLines = (globalGroupId / _range.getNumGroups(0)) * _range.getLocalSize(1);// (4/3) * 2
+                           kernelState.setGlobalId(1, (completeLines + kernelState.getLocalIds()[1])); // 2+0 = 2
+                           kernelState.setGroupId(0, (globalGroupId % _range.getNumGroups(0)));
+                           kernelState.setGroupId(1, (globalGroupId / _range.getNumGroups(0)));
+                        } else if (_range.getDims() == 3) {
+
+                           //Same as 2D actually turns out that localId[0] is identical for all three dims so could be hoisted out of conditional code
+
+                           kernelState.setLocalId(0, (threadId % _range.getLocalSize(0)));
+
+                           kernelState.setLocalId(1, ((threadId / _range.getLocalSize(0)) % _range.getLocalSize(1)));
+
+                           // the thread id's span WxHxD so threadId/(WxH) should yield the local depth  
+                           kernelState.setLocalId(2, (threadId / (_range.getLocalSize(0) * _range.getLocalSize(1))));
+
+                           kernelState.setGlobalId(
+                                 0,
+                                 (((globalGroupId % _range.getNumGroups(0)) * _range.getLocalSize(0)) + kernelState.getLocalIds()[0]));
+
+                           kernelState.setGlobalId(
+                                 1,
+                                 ((((globalGroupId / _range.getNumGroups(0)) * _range.getLocalSize(1)) % _range.getGlobalSize(1)) + kernelState
+                                       .getLocalIds()[1]));
+
+                           kernelState.setGlobalId(
+                                 2,
+                                 (((globalGroupId / (_range.getNumGroups(0) * _range.getNumGroups(1))) * _range.getLocalSize(2)) + kernelState
+                                       .getLocalIds()[2]));
+
+                           kernelState.setGroupId(0, (globalGroupId % _range.getNumGroups(0)));
+                           kernelState.setGroupId(1, ((globalGroupId / _range.getNumGroups(0)) % _range.getNumGroups(1)));
+                           kernelState.setGroupId(2, (globalGroupId / (_range.getNumGroups(0) * _range.getNumGroups(1))));
+                        }*/
+		        /*if(tKernels - globalGroupId > vecSize)
+                        { 
+                           kernelCloneCPU.vecExecution(vecSize);
+                           globalGroupId = globalGroupId + vecSize - 1;
+                        }
+                        else*/
+                           kernelCloneCPU.run();
+                           //System.out.println("End " + kernelState.getGlobalIds()[0]);
+                     }
+		     //System.out.println("Barrier 1 " + threadId);
+                     await(joinBarrier); // This thread will rendezvous with dispatch thread here. This is effectively a join.
+                     //System.out.println("Barrier 1 end " + threadId);                  
+                  }
+               });
+            }
+            //System.out.println("Barrier 2");
+            await(joinBarrier); // This dispatch thread waits for all worker threads here.
+            //System.out.println("Barrier 2 end"); 
+         }
+         return 0;
+   }
+
+   private long executeJavaFromX(final Range _range, final int _passes, int _cpuStart) {
       if (logger.isLoggable(Level.FINE)) {
          logger.fine("executeJava: range = " + _range);
       }
+      //System.out.println("Execute JTP");
 
       if (kernel.getExecutionMode().equals(EXECUTION_MODE.SEQ)) {
          /**
@@ -362,7 +622,499 @@ public class KernelRunner extends KernelRunnerJNI{
              * for the globalIds assigned to kernels inside the thread.
              */
             int tKernelsLast = 0;
-            int startIdLast = 0;
+            int startIdLast = _cpuStart;
+            for (int id = 0; id < threads; id++) {
+               final int threadId = id;
+               final int startId = tKernelsLast + startIdLast;
+               startIdLast = startId;
+
+               final int tKernels;
+               if(kRemain > 0)
+               {
+                  tKernels = kpThread + 1;
+                  kRemain--;
+               }
+               else
+               {
+                  tKernels = kpThread;
+               }
+               tKernelsLast = tKernels;
+               /**
+                *  We clone one kernel for each thread.
+                *  
+                *  They will all share references to the same range, localBarrier and global/local buffers because the clone is shallow.
+                *  We need clones so that each thread can assign 'state' (localId/globalId/groupId) without worrying 
+                *  about other threads.   
+                */
+               final Kernel kernelClone = kernel.clone();
+               final KernelState kernelState = kernelClone.getKernelState();
+
+               kernelState.setRange(_range);
+               kernelState.setLocalBarrier(localBarrier);
+               kernelState.setPassId(passId);
+
+               threadPool.submit(new Runnable(){
+                  @Override public void run() {
+                     for (int globalGroupId = 0; globalGroupId < tKernels; globalGroupId++) {
+
+                        //if (_range.getDims() == 1) {
+                           kernelState.setLocalId(0, (threadId % _range.getLocalSize(0)));
+                           kernelState.setGlobalId(0, (startId + globalGroupId));
+                           kernelState.setGroupId(0, globalGroupId);
+                        
+                        /*} else if (_range.getDims() == 2) {
+
+                           kernelState.setLocalId(0, (threadId % _range.getLocalSize(0))); // threadId % localWidth =  (for 33 = 1 % 4 = 1)
+                           kernelState.setLocalId(1, (threadId / _range.getLocalSize(0))); // threadId / localWidth = (for 33 = 1 / 4 == 0)
+
+                           final int groupInset = globalGroupId % _range.getNumGroups(0); // 4%3 = 1
+                           kernelState.setGlobalId(0, ((groupInset * _range.getLocalSize(0)) + kernelState.getLocalIds()[0])); // 1*4+1=5
+
+                           final int completeLines = (globalGroupId / _range.getNumGroups(0)) * _range.getLocalSize(1);// (4/3) * 2
+                           kernelState.setGlobalId(1, (completeLines + kernelState.getLocalIds()[1])); // 2+0 = 2
+                           kernelState.setGroupId(0, (globalGroupId % _range.getNumGroups(0)));
+                           kernelState.setGroupId(1, (globalGroupId / _range.getNumGroups(0)));
+                        } else if (_range.getDims() == 3) {
+
+                           //Same as 2D actually turns out that localId[0] is identical for all three dims so could be hoisted out of conditional code
+
+                           kernelState.setLocalId(0, (threadId % _range.getLocalSize(0)));
+
+                           kernelState.setLocalId(1, ((threadId / _range.getLocalSize(0)) % _range.getLocalSize(1)));
+
+                           // the thread id's span WxHxD so threadId/(WxH) should yield the local depth  
+                           kernelState.setLocalId(2, (threadId / (_range.getLocalSize(0) * _range.getLocalSize(1))));
+
+                           kernelState.setGlobalId(
+                                 0,
+                                 (((globalGroupId % _range.getNumGroups(0)) * _range.getLocalSize(0)) + kernelState.getLocalIds()[0]));
+
+                           kernelState.setGlobalId(
+                                 1,
+                                 ((((globalGroupId / _range.getNumGroups(0)) * _range.getLocalSize(1)) % _range.getGlobalSize(1)) + kernelState
+                                       .getLocalIds()[1]));
+
+                           kernelState.setGlobalId(
+                                 2,
+                                 (((globalGroupId / (_range.getNumGroups(0) * _range.getNumGroups(1))) * _range.getLocalSize(2)) + kernelState
+                                       .getLocalIds()[2]));
+
+                           kernelState.setGroupId(0, (globalGroupId % _range.getNumGroups(0)));
+                           kernelState.setGroupId(1, ((globalGroupId / _range.getNumGroups(0)) % _range.getNumGroups(1)));
+                           kernelState.setGroupId(2, (globalGroupId / (_range.getNumGroups(0) * _range.getNumGroups(1))));
+                        }*/
+		        if(tKernels - globalGroupId > vecSize)
+                        { 
+                           kernelClone.vecExecution(vecSize);
+                           globalGroupId = globalGroupId + vecSize - 1;
+                        }
+                        else
+                           kernelClone.run();
+                     }
+		     //System.out.println("Barrier 1 " + threadId);
+                     await(joinBarrier); // This thread will rendezvous with dispatch thread here. This is effectively a join.
+                     //System.out.println("Barrier 1 end " + threadId);                  
+                  }
+               });
+            }
+            //System.out.println("Barrier 2");
+            await(joinBarrier); // This dispatch thread waits for all worker threads here.
+            //System.out.println("Barrier 2 end"); 
+         }
+      } // execution mode == JTP
+
+      return 0;
+   }
+
+   private long executeJavaFromXOld(final Range _range, final int _passes, final int _cpuStart) {
+      if (logger.isLoggable(Level.FINE)) {
+         logger.fine("executeJava: range = " + _range);
+      }
+
+      if (kernel.getExecutionMode().equals(EXECUTION_MODE.SEQ)) {
+         /**
+          * SEQ mode is useful for testing trivial logic, but kernels which use SEQ mode cannot be used if the
+          * product of localSize(0..3) is >1.  So we can use multi-dim ranges but only if the local size is 1 in all dimensions. 
+          * 
+          * As a result of this barrier is only ever 1 work item wide and probably should be turned into a no-op. 
+          * 
+          * So we need to check if the range is valid here. If not we have no choice but to punt.
+          */
+         if ((_range.getLocalSize(0) * _range.getLocalSize(1) * _range.getLocalSize(2)) > 1) {
+            throw new IllegalStateException("Can't run range with group size >1 sequentially. Barriers would deadlock!");
+         }
+
+         final Kernel kernelClone = kernel.clone();
+         final KernelState kernelState = kernelClone.getKernelState();
+
+         kernelState.setRange(_range);
+         kernelState.setGroupId(0, 0);
+         kernelState.setGroupId(1, 0);
+         kernelState.setGroupId(2, 0);
+         kernelState.setLocalId(0, 0);
+         kernelState.setLocalId(1, 0);
+         kernelState.setLocalId(2, 0);
+         kernelState.setLocalBarrier(new CyclicBarrier(1));
+
+         for (int passId = 0; passId < _passes; passId++) {
+            kernelState.setPassId(passId);
+            
+               for (int id = _cpuStart; id < _range.getGlobalSize(0)+_cpuStart; id++) {
+                  kernelState.setGlobalId(0, id);
+                  kernelClone.run();
+               }
+            
+         }
+      } else {
+         final int threads = _range.getLocalSize(0) * _range.getLocalSize(1) * _range.getLocalSize(2);
+         final int globalGroups = _range.getNumGroups(0) * _range.getNumGroups(1) * _range.getNumGroups(2);
+         /**
+          * This joinBarrier is the barrier that we provide for the kernel threads to rendezvous with the current dispatch thread.
+          * So this barrier is threadCount+1 wide (the +1 is for the dispatch thread)
+          */
+         final CyclicBarrier joinBarrier = new CyclicBarrier(threads + 1);
+
+         /**
+          * This localBarrier is only ever used by the kernels.  If the kernel does not use the barrier the threads 
+          * can get out of sync, we promised nothing in JTP mode.
+          *
+          * As with OpenCL all threads within a group must wait at the barrier or none.  It is a user error (possible deadlock!)
+          * if the barrier is in a conditional that is only executed by some of the threads within a group.
+          * 
+          * Kernel developer must understand this.
+          * 
+          * This barrier is threadCount wide.  We never hit the barrier from the dispatch thread.
+          */
+         final CyclicBarrier localBarrier = new CyclicBarrier(threads);
+
+         for (int passId = 0; passId < _passes; passId++) {
+            /**
+              * Note that we emulate OpenCL by creating one thread per localId (across the group).
+              * 
+              * So threadCount == range.getLocalSize(0)*range.getLocalSize(1)*range.getLocalSize(2);
+              * 
+              * For a 1D range of 12 groups of 4 we create 4 threads. One per localId(0).
+              * 
+              * We also clone the kernel 4 times. One per thread.
+              * 
+              * We create local barrier which has a width of 4
+              *         
+              *    Thread-0 handles localId(0) (global 0,4,8)
+              *    Thread-1 handles localId(1) (global 1,5,7)
+              *    Thread-2 handles localId(2) (global 2,6,10)
+              *    Thread-3 handles localId(3) (global 3,7,11)
+              *    
+              * This allows all threads to synchronize using the local barrier.
+              * 
+              * Initially the use of local buffers seems broken as the buffers appears to be per Kernel.
+              * Thankfully Kernel.clone() performs a shallow clone of all buffers (local and global)
+              * So each of the cloned kernels actually still reference the same underlying local/global buffers. 
+              * 
+              * If the kernel uses local buffers but does not use barriers then it is possible for different groups
+              * to see mutations from each other (unlike OpenCL), however if the kernel does not us barriers then it 
+              * cannot assume any coherence in OpenCL mode either (the failure mode will be different but still wrong) 
+              * 
+              * So even JTP mode use of local buffers will need to use barriers. Not for the same reason as OpenCL but to keep groups in lockstep.
+              * 
+              **/
+            for (int id = 0; id < threads; id++) {
+               final int threadId = id;
+
+               /**
+                *  We clone one kernel for each thread.
+                *  
+                *  They will all share references to the same range, localBarrier and global/local buffers because the clone is shallow.
+                *  We need clones so that each thread can assign 'state' (localId/globalId/groupId) without worrying 
+                *  about other threads.   
+                */
+               final Kernel kernelClone = kernel.clone();
+               final KernelState kernelState = kernelClone.getKernelState();
+
+               kernelState.setRange(_range);
+               kernelState.setLocalBarrier(localBarrier);
+               kernelState.setPassId(passId);
+
+               threadPool.submit(new Runnable(){
+                  @Override public void run() {
+                     for (int globalGroupId = 0; globalGroupId < globalGroups; globalGroupId++) {
+
+                        if (_range.getDims() == 1) {
+                           kernelState.setLocalId(0, (threadId % _range.getLocalSize(0)));
+                           kernelState.setGlobalId(0, _cpuStart + (threadId + (globalGroupId * threads)));
+                           kernelState.setGroupId(0, globalGroupId);
+                        } else if (_range.getDims() == 2) {
+
+                           /**
+                            * Consider a 12x4 grid of 4*2 local groups
+                            * <pre>
+                            *                                             threads = 4*2 = 8
+                            *                                             localWidth=4
+                            *                                             localHeight=2
+                            *                                             globalWidth=12
+                            *                                             globalHeight=4
+                            * 
+                            *    00 01 02 03 | 04 05 06 07 | 08 09 10 11  
+                            *    12 13 14 15 | 16 17 18 19 | 20 21 22 23
+                            *    ------------+-------------+------------
+                            *    24 25 26 27 | 28 29 30 31 | 32 33 34 35
+                            *    36 37 38 39 | 40 41 42 43 | 44 45 46 47  
+                            *    
+                            *    00 01 02 03 | 00 01 02 03 | 00 01 02 03  threadIds : [0..7]*6
+                            *    04 05 06 07 | 04 05 06 07 | 04 05 06 07
+                            *    ------------+-------------+------------
+                            *    00 01 02 03 | 00 01 02 03 | 00 01 02 03
+                            *    04 05 06 07 | 04 05 06 07 | 04 05 06 07  
+                            *    
+                            *    00 00 00 00 | 01 01 01 01 | 02 02 02 02  groupId[0] : 0..6 
+                            *    00 00 00 00 | 01 01 01 01 | 02 02 02 02   
+                            *    ------------+-------------+------------
+                            *    00 00 00 00 | 01 01 01 01 | 02 02 02 02  
+                            *    00 00 00 00 | 01 01 01 01 | 02 02 02 02
+                            *    
+                            *    00 00 00 00 | 00 00 00 00 | 00 00 00 00  groupId[1] : 0..6 
+                            *    00 00 00 00 | 00 00 00 00 | 00 00 00 00   
+                            *    ------------+-------------+------------
+                            *    01 01 01 01 | 01 01 01 01 | 01 01 01 01 
+                            *    01 01 01 01 | 01 01 01 01 | 01 01 01 01
+                            *         
+                            *    00 01 02 03 | 08 09 10 11 | 16 17 18 19  globalThreadIds == threadId + groupId * threads;
+                            *    04 05 06 07 | 12 13 14 15 | 20 21 22 23
+                            *    ------------+-------------+------------
+                            *    24 25 26 27 | 32[33]34 35 | 40 41 42 43
+                            *    28 29 30 31 | 36 37 38 39 | 44 45 46 47   
+                            *          
+                            *    00 01 02 03 | 00 01 02 03 | 00 01 02 03  localX = threadId % localWidth; (for globalThreadId 33 = threadId = 01 : 01%4 =1)
+                            *    00 01 02 03 | 00 01 02 03 | 00 01 02 03   
+                            *    ------------+-------------+------------
+                            *    00 01 02 03 | 00[01]02 03 | 00 01 02 03 
+                            *    00 01 02 03 | 00 01 02 03 | 00 01 02 03
+                            *     
+                            *    00 00 00 00 | 00 00 00 00 | 00 00 00 00  localY = threadId /localWidth  (for globalThreadId 33 = threadId = 01 : 01/4 =0)
+                            *    01 01 01 01 | 01 01 01 01 | 01 01 01 01   
+                            *    ------------+-------------+------------
+                            *    00 00 00 00 | 00[00]00 00 | 00 00 00 00 
+                            *    01 01 01 01 | 01 01 01 01 | 01 01 01 01
+                            *     
+                            *    00 01 02 03 | 04 05 06 07 | 08 09 10 11  globalX=
+                            *    00 01 02 03 | 04 05 06 07 | 08 09 10 11     groupsPerLineWidth=globalWidth/localWidth (=12/4 =3)
+                            *    ------------+-------------+------------     groupInset =groupId%groupsPerLineWidth (=4%3 = 1)
+                            *    00 01 02 03 | 04[05]06 07 | 08 09 10 11 
+                            *    00 01 02 03 | 04 05 06 07 | 08 09 10 11     globalX = groupInset*localWidth+localX (= 1*4+1 = 5)
+                            *     
+                            *    00 00 00 00 | 00 00 00 00 | 00 00 00 00  globalY
+                            *    01 01 01 01 | 01 01 01 01 | 01 01 01 01      
+                            *    ------------+-------------+------------
+                            *    02 02 02 02 | 02[02]02 02 | 02 02 02 02 
+                            *    03 03 03 03 | 03 03 03 03 | 03 03 03 03
+                            *    
+                            * </pre>
+                            * Assume we are trying to locate the id's for #33 
+                            *
+                            */
+
+                           kernelState.setLocalId(0, (threadId % _range.getLocalSize(0))); // threadId % localWidth =  (for 33 = 1 % 4 = 1)
+                           kernelState.setLocalId(1, (threadId / _range.getLocalSize(0))); // threadId / localWidth = (for 33 = 1 / 4 == 0)
+
+                           final int groupInset = globalGroupId % _range.getNumGroups(0); // 4%3 = 1
+                           kernelState.setGlobalId(0, ((groupInset * _range.getLocalSize(0)) + kernelState.getLocalIds()[0])); // 1*4+1=5
+
+                           final int completeLines = (globalGroupId / _range.getNumGroups(0)) * _range.getLocalSize(1);// (4/3) * 2
+                           kernelState.setGlobalId(1, (completeLines + kernelState.getLocalIds()[1])); // 2+0 = 2
+                           kernelState.setGroupId(0, (globalGroupId % _range.getNumGroups(0)));
+                           kernelState.setGroupId(1, (globalGroupId / _range.getNumGroups(0)));
+                        } else if (_range.getDims() == 3) {
+
+                           //Same as 2D actually turns out that localId[0] is identical for all three dims so could be hoisted out of conditional code
+
+                           kernelState.setLocalId(0, (threadId % _range.getLocalSize(0)));
+
+                           kernelState.setLocalId(1, ((threadId / _range.getLocalSize(0)) % _range.getLocalSize(1)));
+
+                           // the thread id's span WxHxD so threadId/(WxH) should yield the local depth  
+                           kernelState.setLocalId(2, (threadId / (_range.getLocalSize(0) * _range.getLocalSize(1))));
+
+                           kernelState.setGlobalId(
+                                 0,
+                                 (((globalGroupId % _range.getNumGroups(0)) * _range.getLocalSize(0)) + kernelState.getLocalIds()[0]));
+
+                           kernelState.setGlobalId(
+                                 1,
+                                 ((((globalGroupId / _range.getNumGroups(0)) * _range.getLocalSize(1)) % _range.getGlobalSize(1)) + kernelState
+                                       .getLocalIds()[1]));
+
+                           kernelState.setGlobalId(
+                                 2,
+                                 (((globalGroupId / (_range.getNumGroups(0) * _range.getNumGroups(1))) * _range.getLocalSize(2)) + kernelState
+                                       .getLocalIds()[2]));
+
+                           kernelState.setGroupId(0, (globalGroupId % _range.getNumGroups(0)));
+                           kernelState.setGroupId(1, ((globalGroupId / _range.getNumGroups(0)) % _range.getNumGroups(1)));
+                           kernelState.setGroupId(2, (globalGroupId / (_range.getNumGroups(0) * _range.getNumGroups(1))));
+                        }
+
+                        kernelClone.run();
+                     }
+		     //System.out.println("Barrier 1 " + threadId);
+                     await(joinBarrier); // This thread will rendezvous with dispatch thread here. This is effectively a join.
+                     //System.out.println("Barrier 1 end " + threadId);                  
+                  }
+               });
+            }
+            //System.out.println("Barrier 2");
+            await(joinBarrier); // This dispatch thread waits for all worker threads here.
+            //System.out.println("Barrier 2 end"); 
+         }
+      } // execution mode == JTP
+      return 0;
+   }
+   /**
+    * Execute using a Java thread pool. Either because we were explicitly asked to do so, or because we 'fall back' after discovering an OpenCL issue.
+    * 
+    * @param _range
+    *          The globalSize requested by the user (via <code>Kernel.execute(globalSize)</code>)
+    * @param _passes
+    *          The # of passes requested by the user (via <code>Kernel.execute(globalSize, passes)</code>). Note this is usually defaulted to 1 via <code>Kernel.execute(globalSize)</code>.
+    * @return
+    */
+   private long executeJava(final Range _range, final int _passes) {
+      if (logger.isLoggable(Level.FINE)) {
+         logger.fine("executeJava: range = " + _range);
+      }
+      //System.out.println("Execute JTP");
+
+      if (kernel.getExecutionMode().equals(EXECUTION_MODE.SEQ)) {
+         /**
+          * SEQ mode is useful for testing trivial logic, but kernels which use SEQ mode cannot be used if the
+          * product of localSize(0..3) is >1.  So we can use multi-dim ranges but only if the local size is 1 in all dimensions. 
+          * 
+          * As a result of this barrier is only ever 1 work item wide and probably should be turned into a no-op. 
+          * 
+          * So we need to check if the range is valid here. If not we have no choice but to punt.
+          */
+         if ((_range.getLocalSize(0) * _range.getLocalSize(1) * _range.getLocalSize(2)) > 1) {
+            throw new IllegalStateException("Can't run range with group size >1 sequentially. Barriers would deadlock!");
+         }
+
+         final Kernel kernelClone = kernel.clone();
+         final KernelState kernelState = kernelClone.getKernelState();
+
+         kernelState.setRange(_range);
+         kernelState.setGroupId(0, 0);
+         kernelState.setGroupId(1, 0);
+         kernelState.setGroupId(2, 0);
+         kernelState.setLocalId(0, 0);
+         kernelState.setLocalId(1, 0);
+         kernelState.setLocalId(2, 0);
+         kernelState.setLocalBarrier(new CyclicBarrier(1));
+
+         for (int passId = 0; passId < _passes; passId++) {
+            kernelState.setPassId(passId);
+
+            if (_range.getDims() == 1) {
+               for (int id = 0; id < _range.getGlobalSize(0); id++) {
+                  kernelState.setGlobalId(0, id);
+                  kernelClone.run();
+               }
+            } else if (_range.getDims() == 2) {
+               for (int x = 0; x < _range.getGlobalSize(0); x++) {
+                  kernelState.setGlobalId(0, x);
+
+                  for (int y = 0; y < _range.getGlobalSize(1); y++) {
+                     kernelState.setGlobalId(1, y);
+                     kernelClone.run();
+                  }
+               }
+            } else if (_range.getDims() == 3) {
+               for (int x = 0; x < _range.getGlobalSize(0); x++) {
+                  kernelState.setGlobalId(0, x);
+
+                  for (int y = 0; y < _range.getGlobalSize(1); y++) {
+                     kernelState.setGlobalId(1, y);
+
+                     for (int z = 0; z < _range.getGlobalSize(2); z++) {
+                        kernelState.setGlobalId(2, z);
+                        kernelClone.run();
+                     }
+
+                     kernelClone.run();
+                  }
+               }
+            }
+         }
+      } 
+      
+      else {
+         //Total number of kernels that need to be run
+         final int iterations = _range.getLocalSize(0) * _range.getLocalSize(1) * _range.getLocalSize(2) * _range.getNumGroups(0) * _range.getNumGroups(1) * _range.getNumGroups(2);
+
+         //finds the number of threads that should be run
+         int threads = Runtime.getRuntime().availableProcessors();
+
+         //finds the number of kernels per thread
+         int kpThread = iterations / threads;
+         
+         //finds the number remaining
+         int kRemain = iterations % threads;
+
+         //final int globalGroups = _range.getNumGroups(0) * _range.getNumGroups(1) * _range.getNumGroups(2);
+
+         //System.out.println("Global Groups: " + globalGroups);
+         /**
+          * This joinBarrier is the barrier that we provide for the kernel threads to rendezvous with the current dispatch thread.
+          * So this barrier is threadCount+1 wide (the +1 is for the dispatch thread)
+          */
+         final CyclicBarrier joinBarrier = new CyclicBarrier(threads + 1);
+
+         /**
+          * This localBarrier is only ever used by the kernels.  If the kernel does not use the barrier the threads 
+          * can get out of sync, we promised nothing in JTP mode.
+          *
+          * As with OpenCL all threads within a group must wait at the barrier or none.  It is a user error (possible deadlock!)
+          * if the barrier is in a conditional that is only executed by some of the threads within a group.
+          * 
+          * Kernel developer must understand this.
+          * 
+          * This barrier is threadCount wide.  We never hit the barrier from the dispatch thread.
+          */
+         final CyclicBarrier localBarrier = new CyclicBarrier(threads);
+
+         //System.out.println("Passes: " + _passes);
+         for (int passId = 0; passId < _passes; passId++) {
+            /**
+              * Note that we emulate OpenCL by creating one thread per localId (across the group).
+              * 
+              * So threadCount == range.getLocalSize(0)*range.getLocalSize(1)*range.getLocalSize(2);
+              * 
+              * For a 1D range of 12 groups of 4 we create 4 threads. One per localId(0).
+              * 
+              * We also clone the kernel 4 times. One per thread.
+              * 
+              * We create local barrier which has a width of 4
+              *         
+              *    Thread-0 handles localId(0) (global 0,4,8)
+              *    Thread-1 handles localId(1) (global 1,5,7)
+              *    Thread-2 handles localId(2) (global 2,6,10)
+              *    Thread-3 handles localId(3) (global 3,7,11)
+              *    
+              * This allows all threads to synchronize using the local barrier.
+              * 
+              * Initially the use of local buffers seems broken as the buffers appears to be per Kernel.
+              * Thankfully Kernel.clone() performs a shallow clone of all buffers (local and global)
+              * So each of the cloned kernels actually still reference the same underlying local/global buffers. 
+              * 
+              * If the kernel uses local buffers but does not use barriers then it is possible for different groups
+              * to see mutations from each other (unlike OpenCL), however if the kernel does not us barriers then it 
+              * cannot assume any coherence in OpenCL mode either (the failure mode will be different but still wrong) 
+              * 
+              * So even JTP mode use of local buffers will need to use barriers. Not for the same reason as OpenCL but to keep groups in lockstep.
+              * 
+              **/
+            /*
+             * Threads per kernel. Declared outside the for loop so that the value from the last iteration can be used to determine the starting number
+             * for the globalIds assigned to kernels inside the thread.
+             */
+            int tKernelsLast = 0;
+            int startIdLast = 512;
             for (int id = 0; id < threads; id++) {
                final int threadId = id;
                final int startId = tKernelsLast + startIdLast;
@@ -802,6 +1554,7 @@ public class KernelRunner extends KernelRunnerJNI{
    // private int numAvailableProcessors = Runtime.getRuntime().availableProcessors();
 
    private Kernel executeOpenCL(final String _entrypointName, final Range _range, final int _passes) throws AparapiException {
+      //System.out.println("Execute OpenCL");     
       /*
       if (_range.getDims() > getMaxWorkItemDimensionsJNI(jniContextHandle)) {
          throw new RangeException("Range dim size " + _range.getDims() + " > device "
@@ -846,26 +1599,30 @@ public class KernelRunner extends KernelRunnerJNI{
       // Read the array refs after kernel may have changed them
       // We need to do this as input to computing the localSize
       assert args != null : "args should not be null";
+
       final boolean needSync = updateKernelArrayRefs();
       if (needSync && logger.isLoggable(Level.FINE)) {
+          //System.out.println("in 1");
          logger.fine("Need to resync arrays on " + kernel.getClass().getName());
       }
-
+      
       // native side will reallocate array buffers if necessary
       if (runKernelJNI(jniContextHandle, _range, needSync, _passes) != 0) {
          logger.warning("### CL exec seems to have failed. Trying to revert to Java ###");
+         //System.out.println("Fail");
          kernel.setFallbackExecutionMode();
          return execute(_entrypointName, _range, _passes);
       }
 
       if (usesOopConversion == true) {
+          //System.out.println("in 2");
          restoreObjects();
       }
 
       if (logger.isLoggable(Level.FINE)) {
          logger.fine("executeOpenCL completed. " + _range);
       }
-
+      //System.out.println("executeOpenCL completed. " + _range);
       return kernel;
    }
 
@@ -921,7 +1678,7 @@ public class KernelRunner extends KernelRunnerJNI{
                } catch (final Exception exception) {
                   return warnFallBackAndExecute(_entrypointName, _range, _passes, exception);
                }
-
+               
                if ((entryPoint != null) && !entryPoint.shouldFallback()) {
                   synchronized (Kernel.class) { // This seems to be needed because of a race condition uncovered with issue #68 http://code.google.com/p/aparapi/issues/detail?id=68
                      if (device != null && !(device instanceof OpenCLDevice)) {
@@ -932,9 +1689,10 @@ public class KernelRunner extends KernelRunnerJNI{
 
                      int jniFlags = 0;
                      if (openCLDevice == null) {
-                        if (kernel.getExecutionMode().equals(EXECUTION_MODE.GPU)) {
+                        if (kernel.getExecutionMode().equals(EXECUTION_MODE.GPU) || kernel.getExecutionMode().equals(EXECUTION_MODE.BOTH)) {
                            // We used to treat as before by getting first GPU device
                            // now we get the best GPU
+                           // System.out.println("Inside If");
                            openCLDevice = (OpenCLDevice) OpenCLDevice.best();
                            jniFlags |= JNI_FLAG_USE_GPU; // this flag might be redundant now. 
                         } else {
@@ -1147,7 +1905,13 @@ public class KernelRunner extends KernelRunnerJNI{
                   conversionTime = System.currentTimeMillis() - executeStartTime;
 
                   try {
-                     executeOpenCL(_entrypointName, _range, _passes);
+                      /***CURT TRY execute both here ***/
+                      if(kernel.getExecutionMode().equals(EXECUTION_MODE.BOTH)) {
+                          executeBoth(_entrypointName, _range, _passes);
+                      }
+                      else {
+                          executeOpenCL(_entrypointName, _range, _passes);
+                      }
                   } catch (final AparapiException e) {
                      warnFallBackAndExecute(_entrypointName, _range, _passes, e);
                   }
@@ -1166,6 +1930,7 @@ public class KernelRunner extends KernelRunnerJNI{
                   "OpenCL was requested but Device supplied was not an OpenCLDevice");
          }
       } else {
+          //System.out.println("Final Else");
          executeJava(_range, _passes);
       }
 

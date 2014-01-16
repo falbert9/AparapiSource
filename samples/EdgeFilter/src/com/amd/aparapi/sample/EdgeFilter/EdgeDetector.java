@@ -85,7 +85,7 @@ public class EdgeDetector {
             }
         };
         // Execute Kernel.
-      kernel.setExecutionMode(Kernel.EXECUTION_MODE.JTP);
+      kernel.setExecutionMode(Kernel.EXECUTION_MODE.BOTH);
       kernel.execute(Range.create((width-2)*(height-2)));
       long endT = System.nanoTime();
       

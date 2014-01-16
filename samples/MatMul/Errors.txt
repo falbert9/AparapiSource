@@ -1,0 +1,8 @@
+Execution mode=BOTH
+Time = 848481446
+Error at 5154: 0 != 1144000 and 0
+Error at 5726: 0 != 905700 and 0
+Error at 6309: 0 != 758650 and 0
+Error at 6877: 0 != 1594200 and 0
+Error at 7626: 0 != 1051050 and 0
+Error at 8129: 0 != 1128750 and 0

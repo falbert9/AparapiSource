@@ -344,7 +344,9 @@ public abstract class Kernel implements Cloneable {
        * <p>
        * This is is still a work in progress.
        */
-       VEC;
+      BOTH, 
+      VEC;
+       
 
 
       static EXECUTION_MODE getDefaultExecutionMode() {
@@ -430,7 +432,7 @@ public abstract class Kernel implements Cloneable {
       }
 
       public boolean isOpenCL() {
-         return (this == GPU) || (this == CPU);
+         return (this == GPU) || (this == CPU) || (this == BOTH);
       }
    };
 
